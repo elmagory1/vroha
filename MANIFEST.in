@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include vroha *.css
+recursive-include vroha *.csv
+recursive-include vroha *.html
+recursive-include vroha *.ico
+recursive-include vroha *.js
+recursive-include vroha *.json
+recursive-include vroha *.md
+recursive-include vroha *.png
+recursive-include vroha *.py
+recursive-include vroha *.svg
+recursive-include vroha *.txt
+recursive-exclude vroha *.pyc
