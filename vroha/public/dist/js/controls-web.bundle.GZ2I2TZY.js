@@ -28629,6 +28629,9 @@ class Tooltip {
     }
     get_model_value() {
       let value = super.get_model_value();
+      if (!value && !this.doc) {
+        value = this.last_value;
+      }
       return frappe.datetime.get_datetime_as_string(value);
     }
   };
@@ -34442,4 +34445,4 @@ class Tooltip {
 * @license  MIT
 */
 /*! https://mths.be/punycode v1.4.1 by @mathias */
-//# sourceMappingURL=controls-web.bundle.JDVOITZ7.js.map
+//# sourceMappingURL=controls-web.bundle.GZ2I2TZY.js.map

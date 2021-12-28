@@ -1,0 +1,32 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Products Settings",
+  "enable_attribute_filters": 0,
+  "enable_field_filters": 1,
+  "filter_attributes": [],
+  "filter_fields": [
+   {
+    "fieldname": "item_group",
+    "parent": "Products Settings",
+    "parentfield": "filter_fields",
+    "parenttype": "Products Settings"
+   },
+   {
+    "fieldname": "brand",
+    "parent": "Products Settings",
+    "parentfield": "filter_fields",
+    "parenttype": "Products Settings"
+   }
+  ],
+  "hide_variants": 0,
+  "home_page_is_products": 0,
+  "modified": "2021-08-30 22:16:20.810958",
+  "name": "Products Settings",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "products_per_page": 6,
+  "show_availability_status": 0
+ }
+]

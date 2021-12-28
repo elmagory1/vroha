@@ -2,7 +2,7 @@
  {
   "docstatus": 0,
   "doctype": "Website social links",
-  "modified": "2021-12-27 07:13:54.871813",
+  "modified": "2021-12-28 09:56:49.771302",
   "name": "Website social links",
   "parent": null,
   "parentfield": null,
@@ -31,7 +31,7 @@
     "parenttype": "Website social links",
     "show_desk": 1,
     "show_web": 0,
-    "title": "Email",
+    "title": "Email Us",
     "url": "hi@roadslink.com"
    },
    {
@@ -68,7 +68,7 @@
     "parent": "Website social links",
     "parentfield": "social_links",
     "parenttype": "Website social links",
-    "show_desk": 0,
+    "show_desk": 1,
     "show_web": 1,
     "title": "Twitter",
     "url": "https://twitter.com/roadslink"
@@ -89,14 +89,14 @@
    {
     "background": "bg-linkedin",
     "font": "ti-linkedin",
-    "font_desk": null,
+    "font_desk": "fa-linkedin",
     "label": "https://linkedin.com/roadslink",
     "parent": "Website social links",
     "parentfield": "social_links",
     "parenttype": "Website social links",
-    "show_desk": 0,
+    "show_desk": 1,
     "show_web": 1,
-    "title": "Linkedin",
+    "title": "LinkedIn",
     "url": "https://linkedin.com/roadslink"
    }
   ],
