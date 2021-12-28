@@ -1,0 +1,64 @@
+{
+ "__unsaved": 1,
+ "creation": "2021-09-19 16:16:05.152284",
+ "docstatus": 0,
+ "doctype": "Web Template",
+ "fields": [
+  {
+   "fieldname": "reviews",
+   "fieldtype": "Table Break",
+   "label": "Reviews",
+   "reqd": 0
+  },
+  {
+   "__islocal": 1,
+   "__unsaved": 1,
+   "fieldname": "website_image",
+   "fieldtype": "Attach Image",
+   "label": "Image",
+   "reqd": 0
+  },
+  {
+   "fieldname": "brand",
+   "fieldtype": "Link",
+   "label": "Brand",
+   "options": "Brand",
+   "reqd": 0
+  },
+  {
+   "fieldname": "name",
+   "fieldtype": "Data",
+   "label": "Title",
+   "reqd": 0
+  },
+  {
+   "__islocal": 1,
+   "__unsaved": 1,
+   "fieldname": "person",
+   "fieldtype": "Data",
+   "label": "Person",
+   "reqd": 0
+  },
+  {
+   "fieldname": "post",
+   "fieldtype": "Data",
+   "label": "Post",
+   "reqd": 0
+  },
+  {
+   "fieldname": "review",
+   "fieldtype": "Small Text",
+   "label": "Review",
+   "reqd": 0
+  }
+ ],
+ "idx": 0,
+ "modified": "2021-10-09 02:32:25.238270",
+ "modified_by": "Administrator",
+ "module": "Roadslink",
+ "name": "Universe Testimonials",
+ "owner": "Administrator",
+ "standard": 1,
+ "template": "",
+ "type": "Section"
+}

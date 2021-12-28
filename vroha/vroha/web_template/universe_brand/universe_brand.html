@@ -1,0 +1,14 @@
+<div class="col-lg-12">
+    <div class="brand-slider owl-carousel owl-theme overflow-hidden dot-none">
+        {% for brand in brands %}
+            {% set fetchbrand = frappe.get_doc("Brand", brand.brand) %}
+                <div class="card w-100 p-0 bg-transparent border-0 rounded-lg overflow-hidden mr-1 member-card">
+                    <div class="card-image">
+                            <img src="{{fetchbrand.website_image}}" alt="image">
+                    </div>    
+                </div>
+            <!--- <div class="owl-items text-center"><img src="{{fetchbrand.website_image}}" alt="brand" height="35px" class="w-auto ml-auto mr-auto"></div> -->
+        {% endfor %}
+
+    </div>
+</div>

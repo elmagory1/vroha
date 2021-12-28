@@ -1,0 +1,8 @@
+{% for step in steps%}
+<div class="col-lg-3 p-4 text-center {% if loop.index < 4 %}arrow-right {% endif %} aos-init" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="500">
+    <span class="btn-round-xxxl alert-{{step.pill_color}} text-{{step.pill_color}} display1-size open-font fw-900 border {{step.border}}">{{loop.index}}</span>
+    <h2 class="font-xss fw-700 pl-3 pr-3 lh-32 text-uppercase ls-2 {{step.step_text}} mt-4">{{step.step}}</h2>
+   <!-- <p class="fw-500 font-xssss lh-24 text-grey-500 mb-0">Praesent porttitor nunc vitae lacus vehicula, nec mollis eros congue.</p> -->
+</div>
+{% endfor %}
+

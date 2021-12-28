@@ -1,0 +1,72 @@
+{
+ "__islocal": true,
+ "__unsaved": 1,
+ "creation": "2021-09-16 10:11:21.373127",
+ "docstatus": 0,
+ "doctype": "Web Template",
+ "fields": [
+  {
+   "__islocal": 1,
+   "__unsaved": 1,
+   "fieldname": "services",
+   "fieldtype": "Table Break",
+   "label": "Services",
+   "reqd": 0
+  },
+  {
+   "__islocal": 1,
+   "__unsaved": 1,
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title",
+   "reqd": 0
+  },
+  {
+   "__islocal": 1,
+   "__unsaved": 1,
+   "default": "",
+   "fieldname": "subtitle",
+   "fieldtype": "Small Text",
+   "label": "Subtitle",
+   "options": "",
+   "reqd": 0
+  },
+  {
+   "__islocal": 1,
+   "__unsaved": 1,
+   "fieldname": "url",
+   "fieldtype": "Small Text",
+   "label": "Link",
+   "options": "%\n+",
+   "reqd": 0
+  },
+  {
+   "__islocal": 1,
+   "__unsaved": 1,
+   "fieldname": "icon_type",
+   "fieldtype": "Data",
+   "label": "Icon",
+   "options": "arrow-up-right\narrow-down-right",
+   "reqd": 0
+  },
+  {
+   "__islocal": 1,
+   "__unsaved": 1,
+   "default": "text-primary",
+   "fieldname": "icon_color",
+   "fieldtype": "Select",
+   "label": "Icon Color",
+   "options": "\ntext-primary\ntext-secondary\ntext-success\ntext-danger\ntext-warning\ntext-info\ntext-light\ntext-dark",
+   "reqd": 0
+  }
+ ],
+ "idx": 0,
+ "modified": "2021-09-16 10:11:21.373127",
+ "modified_by": "Administrator",
+ "module": "Roadslink",
+ "name": "Universe Services",
+ "owner": "Administrator",
+ "standard": 1,
+ "template": "",
+ "type": "Section"
+}

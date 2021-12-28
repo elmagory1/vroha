@@ -1,0 +1,175 @@
+{% extends "templates/web.html" %}
+
+{% macro email_login_body() -%}
+                <h2 class="fw-700 display1-size display2-md-size mb-3">{{ _("Login into <br>your account")}}</h2>
+                <form id="form-login" role="form">
+                    
+                    <div class="form-group icon-input mb-3 email-field">
+                        <i class="font-sm ti-email text-grey-500 pr-0"></i>
+                        <input type="text" id="login_email" class="style2-input pl-5 form-control text-grey-700 font-xsss fw-600" placeholder="{% if login_name_placeholder %}{{ login_name_placeholder  }}{% else %}{{ _('jane@example.com') }}{% endif %}"
+                        required autofocus>                        
+                    </div>
+                    <div class="form-group icon-input mb-1 password-field">
+                        <input type="Password" id="login_password" class="style2-input pl-5 form-control text-grey-900 font-xss ls-3" placeholder="•••••"
+                        autocomplete="current-password" required>
+                        <i class="font-sm ti-lock text-grey-500 pr-0"></i>
+                        <span toggle="#login_password" class="toggle-password text-muted"><i class="font-sm feather-eye i-right text-grey-500 pr-0"></i></span>
+                    </div>
+                    <div class="form-check text-left mb-3">
+                        <input type="checkbox" class="form-check-input mt-2" id="rememberCheck">
+                        <label class="form-check-label font-xsss text-grey-500" for="rememberCheck">{{ _("Remember me") }}</label>
+                        <a href="#forgot" class="fw-600 font-xsss text-grey-700 mt-1 float-right">{{ _("Forgot Password?") }}</a>
+                    </div>
+                </form>
+                 
+                <div class="col-sm-12 p-0 text-left">
+                    <div class="form-group mb-1">
+                        <button type="submit" form="form-login" class="primary-act form-control text-center style2-input text-white fw-600 bg-current border-0 p-0">{{ _("Login") }}</button>
+                        {% if ldap_settings and ldap_settings.enabled %}
+                            <button type="submit" form="form-login" class="form-control text-center style2-input text-white fw-600 bg-current border-0 p-0 btn-ldap-login">{{ _("Login with LDAP") }}</button>
+                        {% endif %}
+                    </div>
+					{%- if not disable_signup -%}
+						<h6 class="text-grey-500 font-xsss fw-500 mt-0 mb-0 lh-32">{{ _("Don't have an account?") }} <a href="#signup" class="fw-700 ml-1">{{ _("Sign up") }}</a></h6>
+                    {%- endif -%}
+                </div>
+                
+{% endmacro %}
+
+{% block page_content %}
+<!-- {{ for_test }} -->
+
+<div class="row">
+    <div class="col-xl-5 d-none d-xl-block p-0 vh-100 bg-image-cover bg-no-repeat login-left-image"></div>
+    <div class="col-xl-7 vh-lg-100 align-items-center d-flex bg-white rounded-lg overflow-hidden sign-up-in-wrapper">
+    <!--login -->
+        <div class="card shadow-none border-0 ml-auto mr-auto login-card for-login">
+            <div class="card-body rounded-0 text-left">
+                <noscript>
+                    <div class="text-center my-5">
+                        <h4>{{ _("Javascript is disabled on your browser") }}</h4>
+                        <p class="text-muted">
+                            {{ _("You need to enable JavaScript for your app to work.") }}<br>{{ _("To enable it follow the instructions in the following link: {0}").format("<a href='https://enable-javascript.com/'>enable-javascript.com</a></p>") }}
+                    </div>
+                </noscript>
+                {{ email_login_body() }}
+
+                {%- if social_login -%}
+                    <div class="col-sm-12 p-0 text-center mt-2">
+                        <h6 class="mb-0 d-inline-block bg-white fw-500 font-xsss text-grey-500 mb-3">{{ _("Or, Sign in with your social account") }}</h6>
+                        {% for provider in provider_logins %}
+                            <div class="form-group mb-1">
+                                <a href="{{ provider.auth_url }}" class="form-control text-left style2-input text-white fw-600 bg-{{ provider.name }} border-0 p-0 mb-2">
+                                    {% if provider.icon %}
+                                    <img src="{{ provider.icon }}" alt="icon" class="ml-2 w40 mb-1 mr-5"> 
+                                    {% else %}
+                                        <i class="ti-{{ provider.name }} fw-700 font-xl ml-2 mr-2"></i>
+                                    {% endif %}
+                                    {{ _("Login With {0}").format(provider.provider_name) }}
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {%- endif -%}
+            </div>
+        </div> 
+		 <!-- signup -->
+			<div class='card ml-auto mr-auto for-signup login-card {{ "overflow-hidden rounded-xxl error-card signup-disabled" if disable_signup else "shadow-none border-0" }}'>
+				<div class="card-body rounded-0 text-left">
+					{%- if not disable_signup -%}
+					
+						<h2 class="fw-700 display1-size display2-md-size mb-4">{{ _("Create") }} <br>{{ _("your account") }}</h2>                     
+						<form id="form-signup" role="form">
+
+                            <div class="form-check text-left mb-3">
+                                <input class="form-check-input pl-5 mt-2" type="radio" name="emailmobile" id="emailradio" onclick="javascript:yesnoCheck();"" checked="checked">
+                                <label class="form-check-label font-xsss text-grey-800 w75" for="emailradio">
+                                    {{_("Email")}}
+                                </label>
+                                <input class="form-check-input pl-5 mt-2" type="radio" name="emailmobile" id="mobileradio" onclick="javascript:yesnoCheck();">
+                                <label class="form-check-label font-xsss text-grey-800 w75" for="mobileradio">
+                                    {{_("Mobile")}}
+                                </label>
+
+                            </div>
+							
+							<div class="form-group icon-input mb-3">
+								<i class="font-sm ti-user text-grey-500 pr-0"></i>
+								<input type="text" id="signup_fullname" class="style2-input pl-5 form-control text-grey-900 font-xsss fw-600" placeholder="{{ _('Jane Doe') }}" required autofocus>                        
+							</div>
+
+                            <div class="mobilepart d-none">
+
+                                <div class="form-group icon-input mb-3">
+                                    <i class="font-sm ti-package text-grey-500 pr-0"></i>
+                                    <select id="signup_dial" class="style2-select form-control pl-5"> 
+                                        {% for country, code in dial %}
+                                        <option value="{{country}}" data-telcode= "{{code}}" class="text-grey-700">{{country}}({{code}})</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+
+                                <div class="form-group icon-input mb-3">
+                                    <i class="font-sm ti-mobile text-grey-500 pr-0"></i>
+                                    <input pattern="[0-9]*" type="text" id="signup_mobile" class="style2-input pl-5 form-control text-grey-900 font-xsss fw-600" placeholder="{{ _('your mobile') }}">                        
+                                </div>
+
+                            </div>
+
+							<div class="form-group icon-input mb-3 emailpart">
+								<i class="font-sm ti-email text-grey-500 pr-0"></i>
+								<input type="email" id="signup_email" class="style2-input pl-5 form-control text-grey-900 font-xsss fw-600" placeholder="{{ _('jane@example.com') }}">                        
+							</div>
+						
+							<div class="form-check text-left mb-3">
+								<input type="checkbox" class="form-check-input mt-2" id="termsregis" required>
+								<label class="form-check-label font-xsss text-grey-500" for="termsregis">{{ _("Accept Term and Conditions") }}</label>
+							</div>
+						</form>
+						
+						<div class="col-sm-12 p-0 text-left">
+							<div class="form-group mb-1"><button type="submit" form="form-signup" class="primary-act form-control text-center style2-input text-white fw-600 bg-current border-0 p-0 ">{{ _("Sign up") }}</button></div>
+							<h6 class="text-grey-500 font-xsss fw-500 mt-0 mb-0 lh-32">{{ _("Already have account?") }} <a href="#login" class="fw-700 ml-1">{{ _("Login") }}</a></h6>
+						</div>
+					{%- else -%}
+                        <span class='indicator gray'>{{_("Signup Disabled")}}</span>
+								
+						<p>{{_("Signups have been disabled for this website.")}}</p>
+						<div class="col-sm-12 p-0 text-left">
+							<div class="form-group mb-1">
+								<a href="/" class="form-control text-center style2-input text-white fw-600 bg-dark border-0 p-0 ">{{ _("Home") }}</a>
+							</div>
+						</div>
+					{%- endif -%}
+				</div>
+			</div> 
+		
+        <!-- forgot password-->
+		<div class="card shadow-none border-0 ml-auto mr-auto login-card for-forgot">
+			<div class="card-body rounded-0 text-left">
+				<h2 class="fw-700 display1-size display2-md-size mb-4">{{ _('Change') }} <br>{{ _('Your Password') }}</h2>                        
+				<form id="form-forgot" role="form">
+					<div class="form-group icon-input mb-3">
+						<input type="email" id="forgot_email" class="style2-input pl-5 form-control text-grey-900 font-xss ls-3" placeholder="{{ _('Email Address') }}" required autofocus>
+						<i class="font-sm ti-lock text-grey-500 pr-0"></i>
+					</div>
+				</form>
+				 
+				<div class="col-sm-12 p-0 text-left">
+					<div class="form-group mb-1"><button type="submit" form="form-forgot" class="primary-act form-control text-center style2-input text-white fw-600 bg-current border-0 p-0 ">{{ _("Reset Password") }}</button></div>
+					<h6 class="text-grey-500 font-xsss fw-500 mt-0 mb-0 lh-32"><a href="#login" class="fw-700 ml-1">{{ _("Back to Login") }}</a></h6>
+				</div>
+				 
+			</div>
+		</div> 
+       
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>{% include "templates/includes/login/login.js" %}</script>
+{% endblock %}
+
+{% block sidebar %}{% endblock %}
+{% block footer %}{% endblock %}

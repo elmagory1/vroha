@@ -1,0 +1,79 @@
+{
+ "actions": [],
+ "creation": "2021-09-16 08:10:37.633567",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "title",
+  "font",
+  "font_desk",
+  "background",
+  "url",
+  "label",
+  "show_web",
+  "show_desk"
+ ],
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "font",
+   "fieldtype": "Data",
+   "label": "Web Facing Font"
+  },
+  {
+   "fieldname": "background",
+   "fieldtype": "Select",
+   "label": "Background",
+   "options": "bg-facebook\nbg-twiiter\nbg-instagram\nbg-linkedin"
+  },
+  {
+   "fieldname": "url",
+   "fieldtype": "Small Text",
+   "label": "URL "
+  },
+  {
+   "fieldname": "font_desk",
+   "fieldtype": "Select",
+   "label": "Desk Facing Font",
+   "options": "fa-facebook\nfa-twitter\nfa-instagram\nfa-globe\nfa-phone\nfa-linkedin\nfa-envelope"
+  },
+  {
+   "default": "0",
+   "fieldname": "show_web",
+   "fieldtype": "Check",
+   "label": "Show on Web"
+  },
+  {
+   "default": "0",
+   "fieldname": "show_desk",
+   "fieldtype": "Check",
+   "label": "Show on Desk"
+  },
+  {
+   "fieldname": "label",
+   "fieldtype": "Small Text",
+   "label": "Label"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2021-12-27 07:13:27.904733",
+ "modified_by": "Administrator",
+ "module": "Roadslink",
+ "name": "Website social links Table",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

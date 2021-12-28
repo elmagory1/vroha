@@ -1,0 +1,9 @@
+<ul class="d-flex align-items-center float-right mt-2">
+    {%- set item = frappe.get_doc("Website social links") -%}
+    
+    {% for social in item.social_links %}
+        {% if social.show_web == 1 %}
+            <li class="mr-2"><a href="{{social.url}}" target="_blank" class="btn-round-md {{social.background}}"><i class="font-xs {{social.font}} text-white"></i></a></li>
+        {%endif%}
+    {% endfor %}
+</ul>

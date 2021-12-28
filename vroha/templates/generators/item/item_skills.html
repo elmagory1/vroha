@@ -1,0 +1,8 @@
+{% if doc.skills -%}
+<ul class="list-inline"></ul>
+		{% for d in doc.skills -%}
+            <li class="list-inline-item skill-pills mb-1 mt-1">{{d.skill}}</li>
+		{%- endfor %}
+</ul>
+{%- endif %}
+

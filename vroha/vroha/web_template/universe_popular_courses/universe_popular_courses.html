@@ -1,0 +1,40 @@
+
+    {% for item in items %}
+        {% set fetchitem = frappe.get_doc("Item", item.item) %}
+        <!-- <div class="col-lg-6 mb-4 col-xl-3 col-md-6"> -->
+        <div class="col-xl-4 col-xxxl-3 col-lg-6 col-md-6 col-sm-12 mb-4">
+            <div class="card shadow-xss border-0 rounded-lg overflow-hidden mr-1 course-card">
+               <div class="all-wrap video-bttn">
+                    <div class="card-image">
+                        <a href="{{fetchitem.route}}" ><img src="{{fetchitem.website_image}}" alt="image"></a>
+                    </div>
+              </div>
+
+                <div class="card-body pt-3">
+                    <span class="font-xsssss fw-500 pl-3 pr-3 lh-28 text-uppercase rounded-lg ls-2 alert-{{fetchitem.category_color}} d-inline-block text-{{fetchitem.category_color}}">{{fetchitem.item_group}}</span>
+                    <!--<span class="font-xss fw-700 pl-3 pr-3 ls-2 lh-32 d-inline-block text-success float-right"><span class="font-xsssss">$</span> 240</span> -->
+                    <h4 class="fw-700 font-xss mt-2 lh-28"><a href="{{fetchitem.route}}" class="text-dark text-grey-900">{{fetchitem.item_name}}</a></h4>
+                    <!-- <h6 class="font-xssss text-grey-500 fw-600 ml-0 mt-2"> 32 Lesson </h6> -->
+                    <div class="star star-rate d-block w-100 text-left mt-2 font-xl" style="--rating: {{fetchitem.rating or 4.5}};">
+                    </div>
+                </div>
+                <!--
+                <span class="font-xsssss fw-700 pl-3 pr-3 lh-32 text-uppercase rounded-lg ls-2 alert-info d-inline-block text-info mr-1">{{fetchitem.brand}}</span>
+                <p class="fw-500 font-xssss lh-24 text-grey-500 w75 float-right mt-2"><a href="{{fetchitem.route}}"><i class="feather-arrow-right text-info font-xxl"></i></a></p>
+                <div class="clearfix mb-0"></div> -->
+        
+            </div>
+        </div>
+    {% endfor %}
+
+
+<div class="col-lg-6 mb-4 col-xl-3 col-md-6">
+    <div class="card w-100 border-0 p-5 bg-current shadow-xss rounded-lg d-block text-center aos-init" data-aos="zoom-in" data-aos-delay="1000" data-aos-duration="500">
+        
+        <h2 class="display4-size text-white fw-900 open-font mb-0">{{heading}}</h2>
+        <h4 class="font-xssss text-white fw-600 mt-2 mb-3">{{sub_heading}}</h4>
+        <a href="{{action_url}}" class="font-xssss fw-600 text-current p-3 lh-3 w150 btn bg-white d-inline-block mt-3">{{action_text}} </a>
+        
+    </div>
+</div>
+

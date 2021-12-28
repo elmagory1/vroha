@@ -1,0 +1,60 @@
+{% extends "templates/web.html" %}
+
+{% set title = heading or "Contact Us" %}
+{% block header %}<h1>{{ heading or "Contact Us" }}</h1>{% endblock %}
+
+{% block page_content %}
+<section class="section colorbg pl-0 pr-0" data-section-idx="1" data-section-template="Hero" data-doctype="Contact">
+	<div class="container">
+		<div class="row">
+			<div class="h-100 col-12pl-0 pr-0">
+				
+						<itemscope itemtype="http://schema.org/PostalAddress"></itemscope>
+						{% if address_title %}
+							<h1>{{ address_title }}</h1>
+						{% endif %}
+						{% if address_line1 %}
+							<h3>{{ address_line1 }}</h3>
+						{% endif %}
+						<h3>
+							{% if address_line2 %}
+								<span itemprop="streetAddress">{{ address_line2 }}</span>
+							{% endif %}
+							{% if city %}
+								<span itemprop="addressLocality">{{ city }}</span>
+							{% endif %}
+							{% if state %}
+								<span itemprop="addressRegion">{{ state }}</span>
+							{% endif %}
+							{% if pincode %}
+								<span itemprop="postalCode"> - {{ pincode }},</span>
+							{% endif %}
+							{% if country %}
+								<span itemprop="addressCountry">{{ country }}</span> <br />
+							{% endif %}
+						</h3>
+							<!-- Facebook -->
+								<i class="fab fa-facebook-f"></i>
+
+								<!-- Twitter -->
+								<i class="fab fa-twitter"></i>
+
+								<!-- Instagram -->
+								<i class="fab fa-instagram"></i>
+
+								<!-- Linkedin -->
+								<i class="fab fa-linkedin-in"></i>
+
+								<!-- Youtube -->
+								<i class="fab fa-youtube"></i>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+
+<script>
+	{% include "templates/includes/contact.js" %}
+</script>
+{% endblock %}

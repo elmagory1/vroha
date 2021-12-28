@@ -1,0 +1,190 @@
+{%- macro category_card(website_title,route,category_color,category_icon) -%}	  
+<div class="item">
+	<div class="card cat-card-hover mr-1 w250 border-0 p-4 rounded-lg text-center alert-{{category_color}}">
+		<div class="card-body p-2 ml-1 ">
+			<a href="{{route}}" class="btn-round-xl bg-white"><i class="feather-{{category_icon}} text-{{category_color}} font-xl p-2"></i></a>
+			<h4 class="fw-600 font-xsss mt-3 mb-0">{{website_title}}</h4>
+		</div>
+	</div>
+</div>
+{%- endmacro -%}
+
+{%- macro course_slider_card(route,website_image,category_color,item_group,item_name,rating, rate, is_featured=False) -%}	
+	<!-- <div class="col-lg-6 mb-4 col-xl-3 col-md-6"> -->
+	
+		<div class="card shadow-xss border-0 rounded-lg overflow-hidden course-card mr-1 mb-4">
+			<div class="all-wrap video-bttn">
+				<div class="card-image">
+					<a href="{{route}}" ><img src="{{website_image}}" alt="image"></a>
+				</div>
+			</div>
+
+			<div class="card-body pt-3">
+				<span class="font-xsssss fw-500 pl-3 pr-3 lh-28 text-uppercase rounded-lg ls-2 alert-{{category_color}} d-inline-block text-{{category_color}}">{{_(item_group)}}</span>
+				<h4 class="fw-700 font-xss mt-2 lh-28"><a href="{{route}}" class="text-dark text-grey-900">{{_(item_name)}}</a></h4>
+				<div class="star star-rate d-block w-100 text-left mt-2 font-xl" style="--rating: {{rating or 4.5}};">
+				</div>
+				<span class="float-right btn p-2 w100 rounded-xl bg-current font-xssss fw-700 text-white"><span class="font-xsssss"></span>{{_(rate or "Free")}}</span> 
+
+			</div>
+	
+		</div>
+
+{%- endmacro -%}
+
+
+{%- macro search(col_box,col_cat,col_but,placeholder_search,show_cat,categories,search_scope, main_catr) -%}	
+	<div class="row col-12 dropdown dropdown-menusearch p-0 m-0" id="dropdownheaderSearch">
+		<div class="{{col_box}} p-2">
+			<div class="form-group icon-input mb-0">
+				<i class="ti-search font-xs text-grey-700"></i>
+				<input data-scope="{{search_scope.lower()}}" value="{{ frappe.sanitize_html(frappe.form_dict.txt) or '' }}" type="text" class="searchinput style1-input bg-transparent border-0 pl-5 w-100 font-xsss mb-0 text-grey-700 fw-500" placeholder="{{ _(placeholder_search) }}">
+			</div>
+		</div>
+		{% if show_cat == "1" %}
+			<div class="{{col_cat}} p-2">
+				<div class="form-group icon-input mb-0">
+					<i class="ti-package font-xs text-grey-700"></i>
+					<select class="searchselect style1-select bg-transparent border-0 pl-5 text-grey-700"> 
+						<option value="{{main_catr.lower()}}" class="text-grey-700 fw-700">{{main_catr}}</option>
+						{% for category in categories %}
+							{% for key, value in category.items() %}
+								<option value="{{key}}" class="text-grey-700" {% if search_scope == key %} selected{% endif %} >{{value}}</option>
+							{% endfor %}
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+		{% endif %}
+		<div class="{{col_but}} p-2">
+			<a data-pathscope="{{search_scope.lower()}}" class="deep-search w-100 btn bg-current text-white font-xssss fw-600 ls-3 style1-input p-0 border-0 text-uppercase" href="#">{{_("Deep Search")}}</a>
+		</div>
+		<div class="overflow-hidden shadow dropdown-menu w-100 border-0 rounded-0" aria-labelledby="dropdownheaderSearch">
+		</div>
+	</div>
+
+{%- endmacro -%}
+
+{% macro product_image_square(website_image, css_class="") %}
+<div class="product-image product-image-square
+	{% if not website_image -%} missing-image {%- endif %} {{ css_class }}"
+	{% if website_image -%}
+	style="background-image: url('{{ frappe.utils.quoted(website_image) | abs_url }}');"
+	{%- endif %}>
+</div>
+{% endmacro %}
+
+{% macro product_image(website_image, css_class="product-image", alt="") %}
+	<div class="border text-center rounded {{ css_class }}" style="overflow: hidden;">
+		<img itemprop="image" class="website-image h-100 w-100" alt="{{ alt }}" src="{{ frappe.utils.quoted(website_image or 'no-image.jpg') | abs_url }}">
+	</div>
+{% endmacro %}
+
+{% macro media_image(website_image, name, css_class="") %}
+	<div class="product-image sidebar-image-wrapper {{ css_class }}">
+		{% if not website_image -%}
+		<div class="sidebar-standard-image"> <div class="standard-image" style="background-color: rgb(250, 251, 252);">{{name}}</div> </div>
+		{%- endif %}
+		{% if website_image -%}
+			<a href="{{ frappe.utils.quoted(website_image) }}">
+				<img itemprop="image" src="{{ frappe.utils.quoted(website_image) | abs_url }}"
+					class="img-responsive img-thumbnail sidebar-image" style="min-height:100%; min-width:100%;">
+			</a>
+		{%- endif %}
+	</div>
+{% endmacro %}
+
+{% macro render_homepage_section(section) %}
+
+{% if section.section_based_on == 'Custom HTML' and section.section_html %}
+	{{ section.section_html }}
+{% elif section.section_based_on == 'Cards' %}
+<section class="container my-5">
+	<h3>{{ section.name }}</h3>
+
+	<div class="row">
+		{% for card in section.section_cards %}
+		<div class="col-md-{{ section.column_value }} mb-4">
+			<div class="card h-100 justify-content-between">
+				{% if card.image %}
+				<div class="website-image-lazy" data-class="card-img-top h-75" data-src="{{ card.image }}" data-alt="{{ card.title }}"></div>
+				{% endif %}
+				<div class="card-body">
+					<h5 class="card-title">{{ card.title }}</h5>
+					<p class="card-subtitle mb-2 text-muted">{{ card.subtitle or '' }}</p>
+					<p class="card-text">{{ card.content or '' | truncate(140, True) }}</p>
+				</div>
+				<div class="card-body flex-grow-0">
+					<a href="{{ card.route }}" class="card-link">{{ _('More details') }}</a>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</section>
+{% endif %}
+
+{% endmacro %}
+
+{%- macro item_card(title, image, url, description, rate, category, is_featured=False, is_full_width=False, align="Left") -%}
+{%- set align_items_class = resolve_class({
+	'align-items-end': align == 'Right',
+	'align-items-center': align == 'Center',
+	'align-items-start': align == 'Left',
+}) -%}
+{%- set col_size = 3 if is_full_width else 4 -%}
+{% if is_featured %}
+<div class="col-sm-{{ col_size*2 }} item-card">
+	<div class="card featured-item {{ align_items_class }}">
+		{% if image %}
+		<div class="row no-gutters">
+			<div class="col-md-6">
+				<img class="card-img" src="{{ image }}" alt="{{ title }}">
+			</div>
+			<div class="col-md-6">
+				{{ item_card_body(title, description, url, rate, category, is_featured, align) }}
+			</div>
+		</div>
+		{% else %}
+			<div class="col-md-12">
+				{{ item_card_body(title, description, url, rate, category, is_featured, align) }}
+			</div>
+		{% endif %}
+	</div>
+</div>
+{% else %}
+<div class="col-sm-{{ col_size }} item-card">
+	<div class="card {{ align_items_class }}">
+		{% if image %}
+		<div class="card-img-container">
+			<img class="card-img" src="{{ image }}" alt="{{ title }}">
+		</div>
+		{% else %}
+		<div class="card-img-top no-image">
+			{{ frappe.utils.get_abbr(title) }}
+		</div>
+		{% endif %}
+		{{ item_card_body(title, description, url, rate, category, is_featured, align) }}
+	</div>
+</div>
+{% endif %}
+{%- endmacro -%}
+
+{%- macro item_card_body(title, description, url, rate, category, is_featured, align) -%}
+{%- set align_class = resolve_class({
+	'text-right': align == 'Right',
+	'text-center': align == 'Center' and not is_featured,
+	'text-left': align == 'Left' or is_featured,
+}) -%}
+<div class="card-body {{ align_class }}">
+	<div class="product-title">{{ title or '' }}</div>
+	{% if is_featured %}
+	<div class="product-price">{{ rate or '' }}</div>
+	<div class="product-description ellipsis">{{ description or '' }}</div>
+	{% else %}
+	<div class="product-category">{{ category or '' }}</div>
+	<div class="product-price">{{ rate or '' }}</div>
+	{% endif %}
+</div>
+<a href="/{{ url or '#' }}" class="stretched-link"></a>
+{%- endmacro -%}

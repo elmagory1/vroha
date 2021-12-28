@@ -1,0 +1,56 @@
+{
+ "__unsaved": 1,
+ "creation": "2021-09-17 08:24:12.590070",
+ "docstatus": 0,
+ "doctype": "Web Template",
+ "fields": [
+  {
+   "__islocal": 1,
+   "__unsaved": 1,
+   "fieldname": "heading",
+   "fieldtype": "Data",
+   "label": "Last Heading",
+   "reqd": 0
+  },
+  {
+   "fieldname": "sub_heading",
+   "fieldtype": "Data",
+   "label": "Last Subheading",
+   "reqd": 0
+  },
+  {
+   "fieldname": "action_text",
+   "fieldtype": "Data",
+   "label": "Action Text",
+   "reqd": 0
+  },
+  {
+   "fieldname": "action_url",
+   "fieldtype": "Small Text",
+   "label": "Action URL",
+   "reqd": 0
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table Break",
+   "label": "Items",
+   "reqd": 0
+  },
+  {
+   "fieldname": "item",
+   "fieldtype": "Link",
+   "label": "Item",
+   "options": "Item",
+   "reqd": 0
+  }
+ ],
+ "idx": 0,
+ "modified": "2021-09-17 08:42:53.196251",
+ "modified_by": "Administrator",
+ "module": "Roadslink",
+ "name": "Universe Popular Courses",
+ "owner": "Administrator",
+ "standard": 1,
+ "template": "",
+ "type": "Section"
+}

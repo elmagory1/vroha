@@ -1,0 +1,18 @@
+
+    {% for brand in brands %}
+    {% set fetchitem = frappe.get_doc("Brand", brand.brand) %}
+    <!-- <div class="col-lg-6 mb-4 col-xl-3 col-md-6"> -->
+    <div class="col-xl-3 col-xxxl-3 col-lg-4 col-md-4 col-sm-6 col-6 mb-4">
+        <div class="card w-100 p-0 shadow-xss border-0 rounded-lg overflow-hidden mr-1 member-card">
+            <div class="card-image">
+                <img src="{{fetchitem.website_image}}" alt="image">
+                
+            </div>
+
+            <div class="card-body pt-0">
+                <h4 class="fw-700 font-xss mt-3 lh-28 mt-0 text-grey-900">{{fetchitem.brand}}</h4>
+                
+            </div>    
+        </div>
+    </div>
+{% endfor %}

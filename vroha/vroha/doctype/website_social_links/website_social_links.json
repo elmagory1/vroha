@@ -1,0 +1,49 @@
+{
+ "actions": [],
+ "creation": "2021-09-16 08:11:57.886564",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "welcome_text",
+  "social_links"
+ ],
+ "fields": [
+  {
+   "fieldname": "social_links",
+   "fieldtype": "Table",
+   "label": "Social Links",
+   "options": "Website social links Table"
+  },
+  {
+   "fieldname": "welcome_text",
+   "fieldtype": "Data",
+   "label": "Welcome Text",
+   "translatable": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2021-12-25 03:45:53.911393",
+ "modified_by": "Administrator",
+ "module": "Roadslink",
+ "name": "Website social links",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

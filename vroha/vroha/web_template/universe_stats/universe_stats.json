@@ -1,0 +1,71 @@
+{
+ "__unsaved": 1,
+ "creation": "2021-09-16 09:09:51.350716",
+ "docstatus": 0,
+ "doctype": "Web Template",
+ "fields": [
+  {
+   "fieldname": "rating",
+   "fieldtype": "Data",
+   "label": "Rating",
+   "reqd": 0
+  },
+  {
+   "fieldname": "stats",
+   "fieldtype": "Table Break",
+   "label": "Stats",
+   "reqd": 0
+  },
+  {
+   "default": "",
+   "fieldname": "value",
+   "fieldtype": "Data",
+   "label": "Value",
+   "options": "",
+   "reqd": 0
+  },
+  {
+   "fieldname": "subscript",
+   "fieldtype": "Select",
+   "label": "Subscript",
+   "options": "%\n+",
+   "reqd": 0
+  },
+  {
+   "fieldname": "arrow_type",
+   "fieldtype": "Select",
+   "label": "Arrow Type",
+   "options": "arrow-up-right\narrow-down-right",
+   "reqd": 0
+  },
+  {
+   "default": "text-primary",
+   "fieldname": "text",
+   "fieldtype": "Select",
+   "label": "Text",
+   "options": "\ntext-primary\ntext-secondary\ntext-success\ntext-danger\ntext-warning\ntext-info\ntext-light\ntext-dark",
+   "reqd": 0
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title",
+   "reqd": 0
+  },
+  {
+   "fieldname": "subtitle",
+   "fieldtype": "Data",
+   "label": "Sub Title",
+   "reqd": 0
+  }
+ ],
+ "idx": 0,
+ "modified": "2021-09-16 09:20:44.618103",
+ "modified_by": "Administrator",
+ "module": "Roadslink",
+ "name": "Universe Stats",
+ "owner": "Administrator",
+ "standard": 1,
+ "template": "",
+ "type": "Section"
+}

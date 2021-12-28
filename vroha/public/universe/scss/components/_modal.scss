@@ -1,0 +1,364 @@
+h5.modal-title {
+	margin: 0px !important;
+}
+
+// Hack to fix incorrect padding applied by Bootstrap
+body.modal-open[style^="padding-right"] {
+	padding-right: 12px !important;
+
+	header.navbar {
+		padding-right: 12px !important;
+		margin-right: -12px !important;
+	}
+}
+
+.modal {
+	// Same scrollbar as body
+	scrollbar-width: auto;
+	&::-webkit-scrollbar {
+		width: 12px;
+		height: 12px;
+	}
+
+	// Hide scrollbar on touch devices
+	@media(max-width: 991px) {
+		scrollbar-width: none;
+		&::-webkit-scrollbar {
+			width: 0;
+			height: 0;
+		}
+	}
+
+	.modal-content {
+		border-color: $border-color;
+	}
+	.modal-header {
+		position: sticky;
+		top: 0;
+		z-index: 3;
+		background: inherit;
+		padding: 15px 20px;
+		// padding-bottom: 0;
+		border-bottom: 1px dashed $border-color;
+
+		.modal-title {
+			font-weight: 500;
+			line-height: 2em;
+			font-size: $font-size-base;
+			max-width: calc(100% - 80px);
+		}
+
+		.modal-actions {
+			position: absolute;
+			top: 10px;
+			right: 5px;
+
+			.btn-modal-minimize {
+				padding-right: 0;
+
+				.icon {
+					width: 14px;
+					height: 14px;
+					use {
+						stroke: $gray-500;
+					}
+				}
+			}
+            
+		}
+	}
+
+	.modal-body {
+		padding: 15px 20px;
+		.form-layout:first-child > .form-page {
+			.visible-section:first-child {
+				padding-top: 0;
+				.section-body {
+					margin-top: 0;
+				}
+			}
+		}
+
+		.form-layout:last-child > .form-page {
+			.visible-section:last-child {
+				padding-bottom: 0;
+			}
+		}
+	}
+
+	.awesomplete ul {
+		z-index: 2;
+	}
+
+	.modal-footer {
+		position: sticky;
+		bottom: 0;
+		z-index: 1;
+		background: inherit;
+		padding: 15px 20px;
+		border-top: 1px dashed $border-color;
+		justify-content: space-between;
+
+		button {
+			box-shadow: none;
+		}
+
+		.standard-actions {
+			button:not(:last-child) {
+				margin-right: 5px;
+			}
+		}
+
+		& > * {
+			margin: 0;
+		}
+	}
+
+	.form-section {
+		padding: 10px 0;
+
+		&:not(:first-child) {
+			border-top: 1px solid $border-color;
+		}
+
+		&.hide-border {
+			border-top: none !important;
+			padding-top: 0px !important;
+		}
+
+		.form-column {
+			&:first-child {
+				padding-left: 0;
+			}
+			&:last-child {
+				padding-right: 0;
+			}
+		}
+
+		.section-head {
+			padding: 0;
+			font-size: $font-xsss;
+
+			&:not(.collapsed) {
+				padding-bottom: 10px;
+			}
+		}
+	}
+
+	.hasDatepicker {
+		z-index: 1140;
+	}
+
+}
+
+.modal-minimize {
+	position: initial;
+
+	.modal-dialog {
+		position: fixed;
+		right: 15px;
+		bottom: 0;
+		margin: 0;
+		min-width: 400px;
+		.modal-header {
+			padding-top: 10px;
+			padding-bottom: 5px;
+		}
+
+		.modal-content {
+			min-height: 0;
+			border-radius: 8px;
+			border-bottom-right-radius: 0;
+			border-bottom-left-radius: 0;
+			box-shadow: -10px 10px rgba(0, 0, 0, 0.100661);
+		}
+
+		@include media-breakpoint-down(sm) {
+			right: 0;
+			width: 100%;
+			min-width: 100%;
+		}
+	}
+
+	.modal-body, .modal-footer {
+		display: none;
+	}
+}
+
+/* msgprint dialog */
+.msgprint-dialog {
+	.modal-content {
+		min-height: 110px;
+	}
+}
+
+.msgprint {
+	word-wrap: break-word;
+    font-size: $font-xsss;
+
+    hr{
+        width: 10%;
+        margin-left: 0;
+        border-width: 4px;
+    }
+
+	pre {
+		text-align: left;
+	}
+
+	a:not(.btn) {
+		text-decoration: underline;
+	}
+}
+
+// used in CommunicationComposer
+.modal .to_section {
+	form {
+		display: flex;
+		align-items: center;
+		.frappe-control:first-child {
+			flex: 1;
+			margin-bottom: 0px;
+		}
+		.frappe-control:last-child {
+			margin-left: 10px;
+			margin-bottom: -24px;
+			button {
+				// same as form-control input
+				height: calc(1.5em + .75rem + 2px);
+			}
+		}
+	}
+}
+
+.dialog-assignment-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 5px 15px;
+	border-radius: 8px;
+	color: $gray-900;
+	&:not(:last-child) {
+		margin-bottom: 5px;
+	}
+	@extend .row;
+	.remove-btn {
+		display: none;
+	}
+	&:hover {
+		background: $gray-100;
+		.remove-btn {
+			display: block;
+		}
+	}
+	.avatar {
+		margin-right: 15px;
+	}
+}
+
+/*
+.modal-dialog {
+
+}.modal-backdrop-none {
+    .modal-backdrop.show {opacity: 0 !important; }
+}
+
+.modal .modal-content {
+    .close {
+        position: absolute;
+        right: 10px;
+        top:10px;
+        opacity: 1;
+        z-index: 2;
+        width: 24px;
+        height: 24px;
+        border-radius:20px;
+        display: inline-block;
+        line-height: 10px; 
+        i {
+            color: #fff;
+            font-size: 16px; 
+        }
+    }
+}
+
+.modal-dialog {
+    .modal.in & {
+        transform: $modal-show-transform;
+    }
+    
+}
+.modal.in {
+    opacity: 1 !important;
+}
+
+.modal-backdrop {
+    &.in { opacity: $modal-backdrop-opacity; }
+}
+
+//Left
+.modal.left.fade .modal-dialog{
+    left: -280px;
+    -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+       -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
+         -o-transition: opacity 0.3s linear, left 0.3s ease-out;
+            transition: opacity 0.3s linear, left 0.3s ease-out;
+}
+//Right
+.modal.right.fade .modal-dialog{
+    right: -280px;
+    -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+       -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+         -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+            transition: opacity 0.3s linear, right 0.3s ease-out;
+}
+// bottom
+.modal.bottom.fade .modal-dialog{
+    bottom: -50%;
+    -webkit-transition: opacity 0.3s linear, bottom 0.3s ease-out;
+       -moz-transition: opacity 0.3s linear, bottom 0.3s ease-out;
+         -o-transition: opacity 0.3s linear, bottom 0.3s ease-out;
+            transition: opacity 0.3s linear, bottom 0.3s ease-out;
+}
+
+.modal.left.fade.in .modal-dialog,
+.modal.left.fade.show .modal-dialog{
+    left: 0;
+}
+.modal.bottom.fade.in .modal-dialog,
+.modal.bottom.fade.show .modal-dialog{
+    bottom: 0px;
+}
+.modal.right.fade.in .modal-dialog,
+.modal.right.fade.show .modal-dialog{
+    right: 0px;
+}
+
+.modal-open .modal {overflow-y: hidden;}
+
+
+
+
+@media (min-width: 576px) {
+    .modal.wide.fade .modal-dialog {
+        max-width: 800px;
+    }
+    .modal.wide-xl.fade .modal-dialog {
+        max-width: 1000px;
+    }    
+
+    .modal.side.fade .modal-dialog {
+        max-width: 400px;
+    }
+    .modal-dialog {
+        &.video-wrap {
+            max-width: 900px;
+            .close {
+                right:-20px; 
+                top:-20px;  
+            }
+        }
+    }
+
+}
+*/

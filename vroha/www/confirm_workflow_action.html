@@ -1,0 +1,22 @@
+{% extends "frappe/www/message.html" %}
+{% block message_body %}
+  <p>
+    {{ _("Please confirm your action to {0} this document.").format(action) }}
+  </p>
+  {% if alert_doc_change %}
+  <p>
+    <b>{{ _("Note:")}}</b> {{ _("This document has been modified after the email was sent.")}}
+  </p>
+  {% endif %}
+  <p>
+    <a target="_blank" class="underline" href="{{ pdf_link }}">{{ _('View document') }}</a>
+  </p>
+  <div class="col-sm-12 p-0 text-left">
+    <div class="form-group mb-1">
+      <a href='{{ action_link }}' class="btn-primary form-control text-center style2-input text-white fw-600 bg-current border-0 p-0 ">{{ action }}</a>
+    </div>
+    <div class="form-group mb-1">
+      <a href='/' class="btn-secondary form-control text-center style2-input text-white fw-600 bg-dark border-0 p-0 ">{{ Cancel }}</a>
+    </div>
+  </div>
+{% endblock %}

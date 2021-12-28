@@ -1,0 +1,10 @@
+{% for service in services%}
+        <div class="col-lg-4 col-md-6">
+            <div class="card mb-4 w-100 border-0 pt-4 pb-4 pr-4 pl-7 shadow-xss rounded-lg aos-init" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="500">
+                <i class="{{service.icon_type}} {{service.icon_color}} font-xl position-absolute left-15 ml-2"></i>
+                <h2 class="fw-700 font-xss text-grey-900 mt-1">{{service.title}}</h2>
+                <p class="fw-500 font-xsss lh-24 text-grey-700 mb-0">{{service.subtitle}}</p>
+                <p class="fw-500 mt-3"><a href="{{service.url}}"><i class="feather-arrow-right text-info font-xxl"></i></a></p>
+            </div>
+        </div>
+    {% endfor %}

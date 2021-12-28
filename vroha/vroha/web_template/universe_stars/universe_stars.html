@@ -1,0 +1,38 @@
+<div id="{{accord_name}}" class="accordion">
+    {% for item in items %}
+        <div class="card border-0 mb-4">
+            <div class="card-header bg-greylight" id="heading{{loop.index}}">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse{{loop.index}}" aria-expanded="false" aria-controls="collapse{{loop.index}}">
+                        {{item.heading}}
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapse{{loop.index}}" class="collapse" aria-labelledby="heading{{loop.index}}" data-parent="#{{accord_name}}">
+                <div class="card-body">
+                    <table class="table table-vcenter">
+                        <thead class="thead-dark">
+                          <tr>
+                            {% set headers = (item.headers.split(",")) %}
+                            {% for header in headers %}
+                                <th scope="col">{{header}}</th>
+                            {% endfor %}
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {% set rows = (item.details.split(",")) %}
+                            {% for row in rows %}
+                                <tr>
+                                    <td>{{row.split(":")[0]}}</td>
+                                    <td><span class="star star-rate d-block w-100 text-left font-xl" style='--rating: {{row.split(":")[1]}};'></span></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+

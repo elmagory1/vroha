@@ -1,0 +1,24 @@
+{% if navbar_search %}
+    <span class="fw-500 p-1 text-center d-inline-block rounded-xl mt-2 ml-2 mr-2">
+        <a class="menu-search-icon"><i class="feather-search text-grey-900 font-lg"></i></a>
+    </span>
+
+    <div class="app-header-search form-group p-3 shadow-lg bg-white rounded-lg">
+        <div class="row dropdown dropdown-menusearch" id="dropdownMenuSearch">
+            <div class="col-sm-7 col-lg-8">
+                <div class="form-group icon-input mb-0">
+                    <i class="ti-search font-xs text-grey-400"></i>
+                    <input data-scope="courses" class="searchinput style1-input bg-transparent border-0 pl-5 w-100 font-xsss mb-0 text-grey-500 fw-500" placeholder="Search online courses.." type="text">
+                </div>
+            </div>
+            <div class="col-sm-5 d-flex col-lg-4 justify-content-center">
+                <a data-pathscope="/{{main_catr}}" class="deep-search col-8 w-100 mr-2 ml-2 btn bg-current text-white font-xssss fw-600 ls-3 style1-input p-0 border-0 text-uppercase d-none" href="#" id="search_course">{{_("Deep Search")}}</a>
+                <a class="col-4 searchbox-close w-100 mr-2 ml-2 btn bg-danger text-white font-xs fw-600 ls-3 style1-input p-0 border-0 text-uppercase" href="#" id="search_course"><i class="ti-close font-xs"></i></a>
+            </div>
+            <div class="overflow-hidden shadow dropdown-menu w-100 mt-3 border-0 rounded-0" aria-labelledby="dropdownMenuSearch">
+            </div>
+        </div>
+        
+    </div>
+
+{% endif %}

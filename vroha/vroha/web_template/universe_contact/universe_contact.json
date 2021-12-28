@@ -1,0 +1,31 @@
+{
+ "__unsaved": 1,
+ "creation": "2021-09-18 07:00:24.592698",
+ "docstatus": 0,
+ "doctype": "Web Template",
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title",
+   "reqd": 0
+  },
+  {
+   "__islocal": 1,
+   "__unsaved": 1,
+   "fieldname": "query_options",
+   "fieldtype": "Small Text",
+   "label": "Query Options",
+   "reqd": 0
+  }
+ ],
+ "idx": 0,
+ "modified": "2021-09-18 08:18:58.383146",
+ "modified_by": "Administrator",
+ "module": "Roadslink",
+ "name": "Universe Contact",
+ "owner": "Administrator",
+ "standard": 1,
+ "template": "",
+ "type": "Section"
+}

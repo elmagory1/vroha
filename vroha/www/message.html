@@ -1,0 +1,115 @@
+{% extends "templates/web.html" %}
+
+{% block title %}{{ title or _("Message") }}{% endblock %}
+
+{% block page_content %}
+
+{% if error_code and error_code == 503 %}
+{% block navbar %}
+<div class="header-wrapper pt-3 pb-2 shadow-none layer-after scroll-header pos-fixed">
+	<div class="container">
+		<div class="row">
+			<div class="col-6 col-lg-9 navbar pt-0 pb-0">
+				<a href="{{ url_prefix }}{{ home_page or "/" }}">
+					{%- if brand_html -%}
+						{{ brand_html }}
+					{%- elif banner_image -%}
+					<img src='{{ banner_image }}' width="138px"/>
+
+					{%- else -%}
+						<h1 class="fredoka-font ls-3 fw-700 text-current font-xxl">{{ (frappe.get_hooks("brand_html") or [_("Home")])[0] }}</h1>
+					{%- endif -%}
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+
+<div class="row">
+	<div class="col-xl-6 d-none d-xl-block p-0 vh-100 bg-image-contain bg-image-center bg-no-repeat coming-soon-image"></div>
+	<div class="col-xl-6 vh-lg-100 align-items-center d-flex bg-white rounded-lg overflow-hidden">
+		<div class="card shadow-none border-0 pl-lg--5 mr-auto coming-soon-card">
+			<div class="card-body rounded-0 text-left">
+				<div class="timer w-100 mb-3 bg-grey-time"></div>
+				<h2 class="fw-700 text-grey-900 display3-size display4-md-size lh-2">{{ _("We're under") }} <span class="text-primary">{{ _("construction.") }}</span> {{ _("Check back for an update soon.") }}</h2>
+				<div class="form-group mt-4 p-1 border p-2 bg-white rounded-lg">
+					<div class="row">
+						<div class="col-lg-7">
+							<div class="form-group icon-input mb-0">
+								<i class="ti-email font-xs text-grey-400"></i>
+								<input type="text" id="footer-subscribe-email" class="form-control style1-input bg-transparent border-0 pl-5 font-xsss mb-0 text-grey-500 fw-500" placeholder="{{ _('Your email address...') }}" aria-label="{{ _('Your email address...') }}" aria-describedby="footer-subscribe-button">
+							</div>
+						</div>
+						
+						<div class="col-lg-5">
+							<button type="button" id="footer-subscribe-button" class="w-100 d-block btn bg-current text-white font-xssss fw-600 ls-3 style1-input p-0 border-0 text-uppercase">{{ _("Get Updates") }}</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> 
+	</div>
+</div>
+
+{% else %}
+
+<div class='card ml-auto mr-auto overflow-hidden rounded-xxl error-card'>
+	<div class="card-body rounded-0 text-left">
+			
+		<!-- <h2 class="fw-700 display1-size display2-md-size mb-4">{{ _("Create <br>your account</h2>") }}   -->                      
+			<span class='indicator {{ indicator_color or "blue" }}'>{{ title or _("Message") }}</span>
+			{% block message_body %}	
+			<p>{{ message or "" }}</p>
+			{% if error_code %}
+				<p class="font-xsss text-center text-muted mb-0">{{ _("Status: {0}").format(error_code) }}</p>
+			{% endif %}
+			<div class="col-sm-12 p-0 text-left">
+				{% if primary_action %}
+				<div class="form-group mb-1">
+					<a href='{{ primary_action or "/" }}' class="btn-primary form-control text-center style2-input text-white fw-600 bg-current border-0 p-0 ">{{ primary_label or _("Home") }}</a>
+				</div>
+				{% endif %}
+			</div>
+			{% endblock %}
+				
+	</div>
+</div> 
+
+{% endif %}
+
+<script>
+	frappe.ready(function() {
+		if(window.location.hash) {
+			localStorage.setItem('session_last_route', window.location.hash.substr(1));
+		}
+
+		$('.btn-primary').focus();
+
+		{% if error_code and error_code == 503 %}
+
+			var countdown = "{{countdown}}";
+
+			$('.timer').countdown(countdown, function(event) { 
+			var $this = $(this).html(event.strftime(''
+			// + '<span>%w</span> weeks '
+			+ '<div class="time-count"><span class="text-time">%w</span> <span class="text-day">%!w:Week,Weeks;</span></div> '
+			+ '<div class="time-count"><span class="text-time">%d</span> <span class="text-day">%!d:Day,Days;</span></div> '
+			+ '<div class="time-count"><span class="text-time">%H</span> <span class="text-day">%!H:Hour,Hours;</span> </div> '
+			+ '<div class="time-count"><span class="text-time">%M</span> <span class="text-day">%!M:Min,Mins;</span> </div> '
+			+ '<div class="time-count"><span class="text-time">%S</span> <span class="text-day">%!S:Sec,Secs;</span> </div> '));
+			});
+
+		{% endif %}
+		
+	});
+</script>
+{% endblock %}
+
+{% block script %}
+<script>{% include "public/js/universe/countdown.js" %}</script>
+{% endblock %}
+
+{% block sidebar %}{% endblock %}
+{% block footer %}{% endblock %}

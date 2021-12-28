@@ -1,0 +1,15 @@
+{% for group in footer_items if group.child_items %}
+	{# 2 columns to every 5 links, so 5 links get 2 columns, 5-10 links get 4 columns, and so on #}
+	{%- set cols = frappe.utils.ceil((group.child_items | len) / 5) * 2 -%}
+
+		<div class="col-md-3 col-lg-2 col-sm-3 col-xs-6 sm-mb-4">
+			<h5>{{ group.label }}</h5>
+			<ul>
+				{%- for child in group.child_items -%}
+					<li>
+						<a href="{{ child.url | abs_url }}" {% if child.open_in_new_tab %} target="_blank" {% endif %}>{{ child.label }}</a>
+					</li>
+				{%- endfor -%}
+			</ul>
+		</div>
+{% endfor %}

@@ -9,7 +9,7 @@ from vroha import __version__ as version
 setup(
 	name="vroha",
 	version=version,
-	description="Frappe as a LMS",
+	description="Learning made easy",
 	author="Vroha",
 	author_email="desk@vroha.com",
 	packages=find_packages(),

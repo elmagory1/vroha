@@ -1,0 +1,110 @@
+<div class="col-xl-6 col-lg-5 order-lg-2 pt-5 mt-5 pt-lg-0 mt-lg-0">
+
+    {% if type == "Image" -%}
+        <img src="{{image}}" alt="image" class="pt-lg--10 w-100 aos-init" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="500">
+    {% elif type == "Normal" %}
+        {%- set slideshow = frappe.get_doc('Website Slideshow', website_slideshow) -%}
+        {%- set slideshow_id = 'id-' + frappe.utils.generate_hash('Slideshow', 12) -%}
+        {%- set slides = slideshow.slideshow_items -%}
+
+        <div id="{{ slideshow_id }}" class='owl-carousel course-slide owl-theme overflow-hidden {{ "dot-style2 owl-nav-link" if slides | len > 1}} '>
+            {%- for slide in slides -%}
+                <div class="owl-carousel course-slide owl-theme overflow-hidden dot-style2 owl-nav-link pt-lg--10 w-100 aos-init" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="500">
+                    <div class="item">
+                        <div class="card course-slider rounded-lg border-0 banner-wrap overflow-hidden">
+                            <div class="card-image">
+                                {% if slide.video %}
+                                    <video autoplay="" muted="" loop="" id="myVideo">
+                                        <source src="{{slide.video}}" type="video/mp4">
+                                    </video>
+                                {% else %}
+                                    <img src="{{slide.image}}" alt="image">
+                                {% endif %}
+                            </div>
+                            <div class="card-body position-absolute align-items-center d-flex h-100">
+                                <div class="card-content">
+                                    <span class="font-xsssss fw-700 pl-3 pr-3 lh-32 text-uppercase rounded-lg ls-2 {{slide.sticker_back}} {{slide.sticker_text}} d-inline-block  mr-1 mb-2">{{ slide.tag }}</span>
+                                    <h2 class="display1-size display1-sm-size fw-700 lh-3 text-white ">{{slide.heading}}</h2>    
+                                    <div class="d-none d-xl-block font-xsss fw-500 text-white mt-0 mr-5 mb-0">{{slide.description}}</div>
+                                    <div class="clearfix"></div>
+                                    {% if slide.label -%}
+                                        <a href="{{slide.url}}" class="bg-primary-gradiant border-0 text-white fw-600 text-uppercase font-xssss float-left rounded-lg d-inline-block mt-0 p-2 lh-34 text-center ls-3 w200 mt-3">{{slide.label}}</a>
+                                    {% endif %}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+    {%- set slideshow = frappe.get_doc('Item Slideshow', item_slideshow) -%}
+    {%- set slideshow_id = 'id-' + frappe.utils.generate_hash('Slideshow', 12) -%}
+    {%- set slides = slideshow.slideshow_items -%}
+
+        <div id="{{ slideshow_id }}" class='owl-carousel course-slide owl-theme overflow-hidden {{ "dot-style2 owl-nav-link" if slides | len > 1}} '>
+            {%- for slide in slides -%}
+                {%- set item = frappe.get_doc("Item", slide.item) -%}
+                <div class="owl-carousel course-slide owl-theme overflow-hidden dot-style2 owl-nav-link pt-lg--10 w-100 aos-init" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="500">
+                    <div class="item">
+                        <div class="card course-slider rounded-lg border-0 banner-wrap overflow-hidden">
+                            <div class="card-image">
+                                {% if item.item_video %}
+                                    <video autoplay="" muted="" loop="" id="myVideo">
+                                        <source src="{{item.item_video }}" type="video/mp4">
+                                    </video>
+                                {% else %}
+                                    <img src="{{item.website_image}}" alt="image">
+                                {% endif %}
+                            </div>
+                            <div class="card-body position-absolute align-items-center d-flex h-100">
+                                <div class="card-content">
+                                    <span class="font-xsssss fw-700 pl-3 pr-3 lh-32 text-uppercase rounded-lg ls-2 {{slide.sticker_back}} {{slide.sticker_text}} d-inline-block  mr-1 mb-2">{{_(item.item_group) }}</span>
+                                    <h2 class="display1-size display1-sm-size fw-700 lh-3 text-white ">{{_(item.item_name)}}</h2>    
+                                   <!--- <div class="d-none d-xl-block font-xsss fw-500 text-grey-300 mt-0 mr-5 mb-0">{{item.description}}</div> -->
+                                    <div class="star star-rate d-block w-100 text-left mt-2 font-xl" style="--rating: {{item.rating}};">
+                                    </div>
+                                    <p class="review-link font-xssss fw-600 text-grey-100 lh-3 mb-1">({{item.total_ratings}} {{_("ratings")}} )</p>
+                                    <div class="clearfix"></div>
+                                    <a href="{{item.route}}" class="bg-primary-gradiant border-0 text-white fw-600 text-uppercase font-xssss float-left rounded-lg d-inline-block mt-0 p-2 lh-34 text-center ls-3 w200 mt-3">{{_(slide.label)}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    {% endif %}
+</div>
+
+<div class="col-xl-6 col-lg-7 order-lg-1 my-auto pt-lg--10 pt-3">
+    <h2 class="fw-700 text-grey-900 display5-size display4-xs-size lh-1 mb-0 aos-init" data-aos="fade-up" data-aos-delay="100" data-aos-duration="500">{{heading}}</h2>    
+    {% if action_type == "Button" -%}
+        <div class="form-group col-lg-5 mt-4 p-3 shadow-lg  bg-white rounded-lg aos-init" data-aos="fade-up" data-aos-delay="300" data-aos-duration="500">
+            <div class="row">
+                <div class="col-lg-12">
+                    <a href="{{button_url}}" class="w-100 d-block btn bg-current text-white font-xssss fw-600 ls-3 style1-input p-0 border-0 text-uppercase" id="{{button_id}}">{{button_text}}</a>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="form-group mt-4 p-3 shadow-lg p-2 bg-white rounded-lg aos-init" data-aos="fade-up" data-aos-delay="300" data-aos-duration="500">
+            <div class="row dropdown dropdown-menusearch" id="dropdownheaderSearch">
+                <div class="col-lg-7">
+                    <div class="form-group icon-input mb-0">
+                        <i class="ti-search font-xs text-grey-400"></i>
+                        <input data-scope="courses" type="text" class="searchinput style1-input bg-transparent border-0 pl-5 w-100 font-xsss mb-0 text-grey-500 fw-500" placeholder="{{ _('Search online courses..')}}">
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <a data-pathscope="{{search_scope}}" class="deep-search w-100 btn bg-current text-white font-xssss fw-600 ls-3 style1-input p-0 border-0 text-uppercase d-none" href="#">{{_("Deep Search")}}</a>
+                </div>
+                <div class="overflow-hidden shadow dropdown-menu w-100 mt-3 border-0 rounded-0" aria-labelledby="dropdownheaderSearch">
+                </div>
+            </div>
+        </div>
+
+    {% endif %}
+</div>

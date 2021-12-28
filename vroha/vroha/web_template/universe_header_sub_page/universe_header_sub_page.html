@@ -1,0 +1,22 @@
+{% if item %}
+    {% set fetchitem = frappe.get_doc("Item", item) %}
+    <div class="col-lg-8 text-center pt-lg--10 pt-7">
+        <h2 class="fw-700 text-grey-900 display4-size display4-xs-size lh-1 mb-3 pt-5 aos-init" data-aos="fade-up" data-aos-delay="200" data-aos-duration="400">{{fetchitem.item_name}}</h2>
+        <p class="fw-300 font-xss lh-28 text-grey-900 pl-lg--5 pr-lg--5 aos-init" data-aos="fade-up" data-aos-delay="300" data-aos-duration="500">{{fetchitem.description| striptags}}</p>
+        <a href="{{fetchitem.route}}" class="btn border-0 bg-current text-uppercase p-3 text-white fw-700 ls-3 rounded-lg d-inline-block font-xssss mt-3 w200 aos-init" data-aos="fade-up" data-aos-delay="400" data-aos-duration="500">{{primary_text}}</a>
+    </div>
+    <div class="col-lg-7 col-md-9 col-sm-9 col-xs-10 mt-4 pt-4">
+        <img src="{{fetchitem.website_image}}" alt="image" class="img-fluid pt-0 aos-init {% if border %}shadow-xss pt-2 pl-2 pr-2 bg-white{% endif %}" data-aos="zoom-in" data-aos-delay="500" data-aos-duration="500">
+    </div>
+{% else %}
+
+<div class="col-lg-8 text-center pt-lg--10 pt-7">
+    <h2 class="fw-700 text-grey-900 display4-size display4-xs-size lh-1 mb-3 pt-5 aos-init" data-aos="fade-up" data-aos-delay="200" data-aos-duration="400">{{heading}}</h2>
+    <p class="fw-300 font-xss lh-28 text-grey-900 pl-lg--5 pr-lg--5 aos-init" data-aos="fade-up" data-aos-delay="300" data-aos-duration="500">{{sub_heading}}</p>
+    <a href="{{primary_action}}" class="btn border-0 bg-current text-uppercase p-3 text-white fw-700 ls-3 rounded-lg d-inline-block font-xssss mt-3 w200 aos-init" data-aos="fade-up" data-aos-delay="400" data-aos-duration="500">{{primary_text}}</a>
+</div>
+<div class="col-lg-8 col-md-10 col-sm-11 col-xs-11 mt-4 pt-4">
+    <img src="{{image}}" alt="image" class="img-fluid pt-0 aos-init {% if border %}shadow-xss pt-2 pl-2 pr-2 bg-white{% endif %}" data-aos="zoom-in" data-aos-delay="500" data-aos-duration="500">
+</div>
+
+{% endif %}

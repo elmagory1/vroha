@@ -1,0 +1,24 @@
+<h1 class="hero-title" itemprop="name">
+	{{ item_name }}
+</h1>
+<p hidden>
+	<span>{{ _("Item Code") }}:</span>
+	<span itemprop="productID">{{ doc.name }}</span>
+</p>
+<p class="hero-subtitle">
+	{{doc.description}}
+</p>
+<p class="hero-brand">
+	<span class="badge badge-pill badge-primary">{{doc.brand}}</span> 
+</p>
+{% if has_variants %}
+	<!-- configure template -->
+	{% include "templates/generators/item/item_configure.html" %}
+{% else %}
+	<!-- add variant to cart -->
+	{% include "templates/generators/item/item_add_to_cart.html" %}
+{% endif %}
+
+
+
+

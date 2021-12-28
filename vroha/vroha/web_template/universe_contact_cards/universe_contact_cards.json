@@ -1,0 +1,113 @@
+{
+ "__unsaved": 1,
+ "creation": "2021-09-18 09:51:43.883136",
+ "docstatus": 0,
+ "doctype": "Web Template",
+ "fields": [
+  {
+   "fieldname": "email_title",
+   "fieldtype": "Data",
+   "label": "Email Title",
+   "reqd": 0
+  },
+  {
+   "fieldname": "office_title",
+   "fieldtype": "Data",
+   "label": "Office Title",
+   "reqd": 0
+  },
+  {
+   "fieldname": "call_title",
+   "fieldtype": "Data",
+   "label": "Call Title",
+   "reqd": 0
+  },
+  {
+   "__unsaved": 1,
+   "fieldname": "email_content",
+   "fieldtype": "Small Text",
+   "label": "Email Content",
+   "reqd": 0
+  },
+  {
+   "__unsaved": 1,
+   "fieldname": "office_content",
+   "fieldtype": "Small Text",
+   "label": "Office Content",
+   "reqd": 0
+  },
+  {
+   "__unsaved": 1,
+   "fieldname": "call_content",
+   "fieldtype": "Small Text",
+   "label": "Call Content",
+   "reqd": 0
+  },
+  {
+   "__unsaved": 1,
+   "fieldname": "email_url",
+   "fieldtype": "Small Text",
+   "label": "Email Url",
+   "reqd": 0
+  },
+  {
+   "__unsaved": 1,
+   "fieldname": "call_url",
+   "fieldtype": "Small Text",
+   "label": "Call Url",
+   "reqd": 0
+  },
+  {
+   "__unsaved": 1,
+   "fieldname": "email_text",
+   "fieldtype": "Data",
+   "label": "Email Url Text",
+   "reqd": 0
+  },
+  {
+   "__unsaved": 1,
+   "fieldname": "office_text",
+   "fieldtype": "Data",
+   "label": "Office Url Text",
+   "reqd": 0
+  },
+  {
+   "__unsaved": 1,
+   "fieldname": "call_text",
+   "fieldtype": "Data",
+   "label": "Call Url Text",
+   "reqd": 0
+  },
+  {
+   "__unsaved": 1,
+   "fieldname": "latitude",
+   "fieldtype": "Data",
+   "label": "Latitude",
+   "reqd": 0
+  },
+  {
+   "__unsaved": 1,
+   "fieldname": "longitude",
+   "fieldtype": "Data",
+   "label": "Longitude",
+   "reqd": 0
+  },
+  {
+   "__islocal": 1,
+   "__unsaved": 1,
+   "fieldname": "loc_name",
+   "fieldtype": "Data",
+   "label": "Location Name",
+   "reqd": 0
+  }
+ ],
+ "idx": 0,
+ "modified": "2021-09-18 11:30:38.919701",
+ "modified_by": "Administrator",
+ "module": "Roadslink",
+ "name": "Universe Contact cards",
+ "owner": "Administrator",
+ "standard": 1,
+ "template": "",
+ "type": "Section"
+}

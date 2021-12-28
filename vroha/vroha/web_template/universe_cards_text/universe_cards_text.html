@@ -1,0 +1,16 @@
+{% for step in steps%}
+<div class="col-xl-4 col-xxxl-3 col-lg-6 col-md-6 col-sm-12 mb-4">
+        <div class="card w-100 p-0 shadow-xss border text-center overflow-hidden mr-1 rounded-xxl member-card text-card">
+            <div class="card-image">
+                    <img src="{{step.image}}" alt="image">
+            </div>
+            <div class="card-body pt-0">
+                <h2 class="font-md fw-400 text-grey-900 mt-4 mb-0 p-2">{{step.heading}}</h2>
+                <p class="fw-500 font-xsss lh-28 text-grey-900 p-3 beauty-para">{{step.text}}</p>
+            </div>
+            
+            
+        </div>
+</div>
+   
+{%- endfor -%}

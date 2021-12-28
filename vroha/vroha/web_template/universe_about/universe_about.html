@@ -1,0 +1,11 @@
+<div class="col-lg-6">
+    <h4 class=" fw-500 mb-4 lh-30 font-xss text-grey-900 mt-0">{{text}}</h4>  
+</div>
+<div class="col-lg-5 offset-lg-1">
+    <ul class="d-flex list-inline float-right-md mb-3">
+        {%- set item = frappe.get_doc("Website social links") -%}
+        {% for social in item.social_links %}
+            <li class="list-inline-item mr-1"><a href="{{social.url}}" target="_blank" class="btn-round-md {{social.background}}"><i class="font-xs {{social.font}} text-white"></i></a></li>
+        {% endfor %}
+    </ul>   
+</div>

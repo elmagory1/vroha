@@ -1,0 +1,20 @@
+
+        <div id="{{accord_name}}" class="accordion">
+            {% for item in items %}
+                <div class="card border-0 mb-4">
+                    <div class="card-header bg-greylight" id="{{accord_name}}{{loop.index}}">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse{{accord_name}}{{loop.index}}" aria-expanded="false" aria-controls="collapse{{accord_name}}{{loop.index}}">
+                            {{item.heading}}
+                        </button>
+                    </h5>
+                    </div>
+
+                    <div id="collapseOne" class="collapse" aria-labelledby="{{accord_name}}{{loop.index}}" data-parent="#{{accord_name}}">
+                    <div class="card-body">
+                        <p class="text-dark-800">{{item.body}}</p>
+                    </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>

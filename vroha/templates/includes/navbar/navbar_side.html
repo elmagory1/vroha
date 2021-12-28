@@ -1,0 +1,93 @@
+<div class="nav-content">
+
+    <div class="nav-top">
+        <!-- <a href="#" class="toggle-menu d-inline-block"><i class="ti-arrows-horizontal bg-grey btn-round-sm font-xssss fw-700 text-dark ml-2 mr-2 "></i></a> -->
+        <span class="d-inline-block fredoka-font ls-3 fw-600 text-current font-xl logo-text mb-0">{{_("Roadslink")}} </span> </a>
+        <!-- <a href="#" class="close-nav d-inline-block right"><i class="ti-close bg-grey btn-round-sm font-xssss fw-700 text-dark ml-2 mr-2 "></i></a> -->
+    </div>
+
+    {% include "templates/includes/navbar/navbar_lang.html" %}
+
+    {% if not only_static %}
+        {% if frappe.session.user != 'Guest' %}
+            <div class="col-lg-12 text-center my-auto d-flex"> 
+                {%- for child in post_login -%}
+                    {%- if child.url -%}
+                            <a href="{{ child.url | abs_url }}" {% if child.open_in_new_tab %} target="_blank" {% endif %} rel="nofollow" class="w-100 ml-1 mr-1 btn text-uppercase p-3 fw-700 ls-3 rounded-lg font-xssss {{ loop.cycle('border-0 bg-current text-white btn-warning', 'border-warning text-current') }}">{{ child.label }}</a>
+
+                    {%- endif -%}
+                {%- endfor -%}
+            </div>  
+        {% else %}
+            <div class="col-lg-12 text-center my-auto d-flex">
+                {% if not hide_login %}
+                    <a href="/login" class="w-100 ml-1 mr-1 btn text-uppercase p-3 fw-700 ls-3 rounded-lg font-xssss border-0 bg-current text-white btn-warning">{{ _("Login") }}</a>
+                {% endif %}
+                {%- if not disable_signup -%}
+                    <a href="/login#signup" class="w-100 ml-1 mr-1 btn text-uppercase p-3 fw-700 ls-3 rounded-lg font-xssss border-warning text-current">{{ _("Signup") }}</a>
+                {%- endif -%}
+            </div>    
+        {% endif %}   
+  
+    {% endif %}
+
+    <div class="nav-caption fw-600 font-xssss text-grey-900 mt-4"><span>Website </span>Menu
+    </div>
+
+    {% macro render_item(item, submenu=False, parent=False) %}
+        {% if item.child_items %}
+            {% if parent %}
+                {%- set dropdown_id = 'id-' + frappe.utils.generate_hash('Dropdown', 12) -%}
+                <li>
+                    <a href="#{{ dropdown_id }}" class="collapsed nav-content-bttn open-font" data-tab="{{ _(item.label) }}" data-toggle="collapse" data-target="#{{ dropdown_id }}"><i class="{{item.icon_class or ''}} mr-3"></i><span>{{ _(item.label) }}</span></a>
+
+                    <div class="collapse" id="{{ dropdown_id }}" aria-expanded="false">
+                        <ul class="mb-3 pl-2 pt-2 bg-10">
+                            {% for child in item.child_items %}
+                                {{ render_item(child, True) }}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </li>
+            {% else %}
+                {%- set dropdown_id = 'id-' + frappe.utils.generate_hash('Dropdown', 12) -%}
+
+                <li class="ml-0 mr-0">
+                    <a href="#{{ dropdown_id }}" class="collapsed nav-content-bttn open-font" data-tab="{{ _(item.label) }}" data-toggle="collapse" data-target="#{{ dropdown_id }}"><i class="{{item.icon_class or ''}} mr-3"></i><span>{{ _(item.label) }}</span></a>
+                   
+                    <div class="collapse" id="{{ dropdown_id }}" aria-expanded="false">
+                        <ul class="mb-3 pl-4 pt-2 bg-20">
+                            {% for child in item.child_items %}
+                                {{ render_item(child, True) }}
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                </li>
+
+            {% endif %}
+
+        {% else %}
+            {% if parent %}
+                <li>
+                    <a href="{{ (item.url or '')|abs_url }}" class="nav-content-bttn open-font" data-tab="{{ _(item.label) }}" {% if item.open_in_new_tab %} target="_blank" {% endif %}><i class="{{item.icon_class or ''}} mr-3"></i><span>{{ _(item.label) }}</span></a>
+                </li>
+            {% else %}
+                <a href="{{ (item.url or '')|abs_url }}" class="side-drop-item open-font" data-tab="{{ _(item.label) }}" {% if item.open_in_new_tab %} target="_blank" {% endif %}><i class="{{item.icon_class or ''}} mr-3"></i><span>{{ _(item.label) }}</span></a>
+            {% endif %}
+        {% endif %}
+    {% endmacro %}
+
+    <ul class="side-drop-items mb-3 collapse show">
+        {% if top_bar_items -%}
+                {%- for item in top_bar_items -%}
+                    {% if not item.parent_label and not item.right -%}
+                        {{ render_item(item, parent=True) }}
+                    {%- endif -%}
+                {%- endfor %}
+        {%- endif %}
+    </ul>
+    
+        
+</div>
+

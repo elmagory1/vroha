@@ -1,0 +1,153 @@
+{% extends "templates/web.html" %}
+{% block title %}{{ _("My Account") }}{% endblock %}
+
+{% block page_content %}
+
+<div class="main-wrapper">
+    <!-- navigation -->
+
+	<nav class="navigation filter-menu">
+		<div class="container scroll-bar child-scroll-cont">
+			<div class="d-flex justify-content-between align-items-center">
+				<a href="#" class="mb-4 close-filter d-lg-none"><i class="ti-close bg-grey btn-round-sm font-xssss fw-700 text-dark ml-2 mr-2 "></i></a>
+			</div>
+
+			<div class="card mb-5 rounded-xxl border-lite widget-side scroll-hite">
+				<div class="card-body d-block text-left pt-1 scroll-bar child-scroll-cont-nohide">
+					<div class="mb-2">
+						<div class="filter-label">
+							{{_("Go To")}}
+						</div>
+
+						<div class="filter-options">
+							<a class="font-xsss fw-600 w-100 text-grey-800 ml-0 switch-to-desk d-none" href="/app">
+								<u>{{ _("Switch To Desk") }}</u><i class="ti-arrow-top-right fw-600 font-xssss text-blue ml-1"></i>
+							</a>
+							{% if do_elearn %}
+								<a class="font-xsss fw-600 w-100 text-grey-800 d-inline-block ml-0" href="/elearn">
+									<u>{{ _("Access Elearning") }}</u><i class="ti-arrow-top-right fw-600 font-xssss text-blue ml-1"></i>
+								</a>
+							{% endif %}
+
+							<a class="font-xsss fw-600 w-100 text-grey-800 d-inline-block ml-0" href="/packages">
+								<u>{{ _("Partner Packages") }}</u><i class="ti-arrow-top-right fw-600 font-xssss text-blue ml-1"></i>
+							</a>
+
+							<a class="font-xsss fw-600 w-100 text-grey-800 d-inline-block ml-0" href="/me">
+								<u>{{ _("My Dashboard") }}</u><i class="ti-arrow-top-right fw-600 font-xssss text-blue ml-1"></i>
+							</a>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+
+			<div class="card mb-5 rounded-xxl border-lite widget-side scroll-hite">
+				<div class="card-body d-block text-left pt-1 scroll-bar child-scroll-cont-nohide">
+					<div class="mb-2">
+						<div class="filter-label">
+							{{_("My Menu")}}
+						</div>
+
+							<div class="filter-options">
+								{% for item in sidebar_items -%}
+									<a class="font-xsss fw-600 w-100 text-grey-800 d-inline-block ml-0" href="{{ item.route }}"
+										{% if item.target %}target="{{ item.target }}"{% endif %}>
+										{{ _(item.title or item.label) }}
+									</a>
+								{% endfor %}
+							</div>
+					</div>
+					
+				</div>
+			</div>
+
+			<div class="card mb-5 rounded-xxl border-lite widget-side scroll-hite">
+				<div class="card-body d-block text-left pt-1 scroll-bar child-scroll-cont-nohide">
+					<div class="mb-2">
+						<div class="filter-label">
+							{{_("My Settings")}}
+						</div>
+
+							<div class="filter-options">
+									<a class="font-xsss fw-600 w-100 text-grey-800 d-inline-block ml-0" href="/update-password">
+										{{ _("Reset Password") }}
+									</a>
+									<a class="font-xsss fw-600 w-100 text-grey-800 d-inline-block ml-0" href="/update-profile?name={{ user }}">
+										{{ _("Update Profile") }}
+									</a>
+									<a class="font-xsss fw-600 w-100 text-grey-800 d-inline-block ml-0" href="/third_party_apps">
+										{{ _("Manage Apps") }}
+									</a>
+							</div>
+					</div>
+					
+				</div>
+			</div>
+
+		</div>
+	</nav>
+
+
+    <div class="main-content no-bg include-left">
+        <div class="middle-sidebar-bottom">
+            <div class="middle-sidebar-left middle-sidebar-left-full">
+				<div class="card d-block w-100 border-0 shadow-xss rounded-lg overflow-hidden mb-3">
+					<div class="card-body p-lg-5 p-4 bg-primary-gradiant">
+						<div class="clearfix"></div>
+						<div class="row">
+							
+							<div class="col-lg-4 pl-lg-5 pt-2 pb-2">
+								<span class="p-0 btn-round-xxxl bg-white user-image-wrapperme font-xl"></span>
+								<h4 class="fw-700 font-md text-white mt-3 mb-1">{{full_name}} {% if is_verified_sup %}<i class="ti-check font-xssss btn-round-xs bg-primary text-white ml-1"></i>{%endif%}</h4>
+								<span class="font-xssss fw-600 text-white d-inline-block ml-0"><i class="ti-email fw-600 font-xss text-white mr-1 align-middle"></i>  {{frappe.session.user}}</span>
+								<br />
+								{% if mobile_no %}
+								<span class="font-xssss fw-600 text-white d-inline-block ml-0"><i class="ti-mobile fw-600 font-xss text-white mr-1 align-middle"></i> {{mobile_no}}</span>
+								{%endif%}
+							</div>
+							<div class="col-lg-4 pl-lg-5 pt-2 pb-2">
+								{% if do_elearn%}
+										<h2 class="display5-size text-white fw-700 lh-1 mr-3">0</h2>
+										<h4 class="fw-600 font-sm text-white mt-3 mb-1">Courses </h4>
+										<a href="/courses"><h4 class="font-xsss fw-600 text-white d-inline-block ml-0">Browse Courses <i class="feather-arrow-up-right text-white font-xss"></i></h4></a>
+								{%else%}
+									<h2 class="display5-size text-white fw-700 lh-1 mr-3">0</h2>
+									<h4 class="fw-600 font-sm text-white mt-3 mb-1">Quotes </h4>
+									<a href="/my_quotes"><h4 class="font-xsss fw-600 text-white d-inline-block ml-0">Submit Quote <i class="feather-arrow-up-right text-success font-xss"></i></h4></a>
+								{%endif%}
+							</div>
+							<div class="col-lg-4 pl-lg-5 pt-2 pb-2">
+								{% if is_supplier %}
+									{% if do_elearn%}
+										<h2 class="display5-size text-white fw-700 lh-1 mr-3">500</h2>
+										<h4 class="fw-600 font-sm text-white mt-3 mb-1">Enrollments Left </h4>
+									{%else%}
+										<h2 class="display5-size text-white fw-700 lh-1 mr-3">500</h2>
+										<h4 class="fw-600 font-sm text-white mt-3 mb-1">Leads Left </h4>
+									{%endif%}
+										{% if supplier_need_verification%}
+											{% if is_verified_sup%}
+												<a href="/partner"><h4 class="font-xsss fw-600 text-white d-inline-block ml-0"> Verified <i class="ti-check font-xssss btn-round-xs bg-primary text-white ml-1"></h4></a>
+											{%else%}
+												<a href="/partner"><h4 class="font-xsss fw-600 text-white d-inline-block ml-0"> Unverified <i class="ti-alert font-xssss btn-round-xs bg-primary text-white ml-1"></h4></a>
+											{%endif%}
+										{%endif%}
+										<a href="/packages"><h4 class="font-xsss fw-600 text-white d-inline-block ml-0">Browse Plans <i class="feather-arrow-up-right text-white font-xss"></i></h4></a>
+								{%else%}
+									<a href="/partner"><h4 class="font-xs fw-600 text-white d-inline-block ml-0"><u>Become a Partner </u><i class="feather-arrow-up-right text-white font-xss"></i></h4></a><br />
+									<a href="/packages"><h4 class="font-xs fw-600 text-white d-inline-block ml-0"><u>Browse Plans </u><i class="feather-arrow-up-right text-white font-xss"></i></h4></a>
+								{%endif%}
+							</div>
+						</div>
+								 
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{%- block footer -%}{%- endblock -%}

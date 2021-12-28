@@ -1,0 +1,27 @@
+
+            <div class="col-12">
+                <div class="card w-100 p-4 p-lg--5 rounded-xxl bg-current border-0">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-10 text-center">
+                            <h2 class="fw-700 text-white display2-size lh-3 mb-2 display2-md-size">{{heading}}</h2>
+                        </div>
+                        <div class="col-lg-8 text-center">
+                            <p class="font-xss lh-28 text-white mb-0 fw-500">{{sub_heading}}</p>
+                            <div class ="mt-3">
+                            {% if show_points %}
+                                {% for point in points %}
+                                    <h4 class="text-white fw-600 font-xss mb-2"><i class="ti-arrow-right mr-2 align-middle font-lg text-white fw-600"></i>{{point.p_title}}</h4>
+                                {% endfor %}
+                            {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-lg-12 mt-5 text-center pt-3 my-auto">
+                            <a href="{{primary_action}}" class="ml-1 mr-1 rounded-lg text-white font-xss border-size-md border-white fw-600 open-font p-3 w200 btn">{{primary_text}}</a>
+                            {% if secondary_text %}
+                                <a href="{{secondary_action}}" class="ml-1 mr-1 mt-sm-0 mt-2 rounded-lg alert-light text-current font-xss border-size-md border-0 fw-600 open-font p-3 w200 btn">{{secondary_text}}</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+ 

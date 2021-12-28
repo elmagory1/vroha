@@ -1,0 +1,54 @@
+{% macro render_item(item, submenu=False, parent=False) %}
+	{% if item.child_items %}
+		{% if parent %}
+			{%- set dropdown_id = 'id-' + frappe.utils.generate_hash('Dropdown', 12) -%}
+			<li class="nav-item dropdown {% if submenu %} dropdown-submenu {% endif %}">
+				<a class="nav-link dropdown-toggle" href="#" id="{{ dropdown_id }}" role="button"
+					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					{{ _(item.label) }} <i class="ti-angle-down"></i>
+				</a>
+			
+				<div class="dropdown-menu" aria-labelledby="{{ dropdown_id }}">
+					{% for child in item.child_items %}
+						{{ render_item(child, True) }}
+					{% endfor %}
+
+				</div>
+			</li>
+		{% else %}
+			{%- set dropdown_id = 'id-' + frappe.utils.generate_hash('Dropdown', 12) -%}
+			<li class="dropdown {% if submenu %} dropdown-submenu {% endif %}">
+				<a class="dropdown-item dropdown-toggle" href="#" id="{{ dropdown_id }}" role="button"
+					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					{{ _(item.label) }}
+				</a>
+				<div class="dropdown-menu" aria-labelledby="{{ dropdown_id }}">
+					{% for child in item.child_items %}
+						{{ render_item(child, True) }}
+				{% endfor %}
+				</div>
+			</li>
+		{% endif %}
+
+	{% else %}
+		{% if parent %}
+			<li class="nav-item">
+				<a class="nav-link {{item.class or ''}}" href="{{ (item.url or '')|abs_url }}" {% if item.open_in_new_tab %} target="_blank" {% endif %}>
+					{{ _(item.label) }}
+				</a>
+			</li>
+		{% else %}
+			<a class="dropdown-item" href="{{ (item.url or '') | abs_url }}" {% if item.open_in_new_tab %} target="_blank" {% endif %}>
+				{{ _(item.label) }}
+			</a>
+		{% endif %}
+	{% endif %}
+{% endmacro %}
+
+{% if top_bar_items -%}
+		{%- for item in top_bar_items -%}
+			{% if not item.parent_label and not item.right -%}
+				{{ render_item(item, parent=True) }}
+			{%- endif -%}
+		{%- endfor %}
+{%- endif %}

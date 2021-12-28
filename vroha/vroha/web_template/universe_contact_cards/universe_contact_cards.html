@@ -1,0 +1,45 @@
+<div class="col-lg-12 pb-lg--7 pb-5 pt-0">
+    <div class="row">
+        <div class="col-lg-4 col-md-4 xs-mb-2">
+            <div class="card shadow-xss border-0 p-5 rounded-lg">
+                <span class="btn-round-xxxl alert-success"><i class="feather-mail text-success font-xl"></i></span>
+                <h2 class="fw-700 font-sm mt-4 mb-3 text-grey-900">{{email_title}}</h2>
+                <p class="font-xsss text-grey-500 fw-500 mb-3">{{email_content}}</p>
+                <a href="{{email_url}}" class="fw-700 font-xsss text-primary">{{email_text}}</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-4 xs-mb-2">
+            <div class="card shadow-xss border-0 p-5 rounded-lg">
+                <span class="btn-round-xxxl alert-primary"><i class="feather-map-pin text-primary font-xl"></i></span>
+                <h2 class="fw-700 font-sm mt-4 mb-3 text-grey-900">{{office_title}}</h2>
+                <p class="font-xsss text-grey-800 fw-500 mb-3">{{office_content}}</p>
+                <a href="#" onclick="mapsSelector()" class="fw-700 font-xsss text-primary">{{office_text}}</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-4 xs-mb-2">
+            <div class="card shadow-xss border-0 p-5 rounded-lg">
+                <span class="btn-round-xxxl alert-danger"><i class="feather-phone text-danger font-xl"></i></span>
+                <h2 class="fw-700 font-sm mt-4 mb-3 text-grey-900">{{call_title}}</h2>
+                <p class="font-xsss text-grey-800 fw-500 mb-3">{{call_content}}</p>
+                <a href="{{call_url}}" class="fw-700 font-xsss text-primary">{{call_text}}</a>
+            </div>
+        </div>
+
+         
+    </div>
+</div>
+
+<script>
+    function mapsSelector() {
+        if /* if we're on iOS, open in Apple Maps */
+            ((navigator.platform.indexOf("iPhone") != -1) || 
+            (navigator.platform.indexOf("iPad") != -1) || 
+            (navigator.platform.indexOf("iPod") != -1))
+            window.open("https://www.google.com/maps/search/{{loc_name}}/@{{latitude}},{{longitude}},15z");
+        else /* else use Google */
+                window.open("https://www.google.com/maps/search/{{loc_name}}/@{{latitude}},{{longitude}},15z");
+        }
+</script>
+

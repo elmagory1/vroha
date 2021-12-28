@@ -1,0 +1,25 @@
+[
+ {
+  "address_line1": "Burj Khalifa Area, 51 Business Tower,",
+  "address_line2": "Suit 1205, ",
+  "address_title": "Roadslink",
+  "city": "Dubai",
+  "country": "UAE",
+  "docstatus": 0,
+  "doctype": "Contact Us Settings",
+  "email_id": "info@roadslink.com",
+  "forward_to_email": "prem@invitik.com",
+  "heading": "Contact Us",
+  "introduction": "<div class=\"ql-editor read-mode\"><p>If you have any query then please don't hesitate to contact Us.</p></div>",
+  "modified": "2021-09-04 02:52:56.164188",
+  "name": "Contact Us Settings",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "phone": "+97 143 607 073",
+  "pincode": "24899",
+  "query_options": "Sales Query\nSupport  Query",
+  "skype": null,
+  "state": ""
+ }
+]

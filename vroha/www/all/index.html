@@ -1,0 +1,105 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+{% set cat_name = [] %}
+<div class="all-item container" itemscope itemtype="http://schema.org/Product" data-item-group="{{ name }}">
+
+    <div class="row">
+
+		<div class="col-lg-12 mb-3">
+			<div class="card rounded-xxl mt-4 border-0 bg-no-repeat bg-image-contain banner-wrap">
+				<div class="card-body p-4">
+					<div class="d-block">
+						<a class="btn-round-lg fw-600 text-uppercase border font-xssss d-inline-block mt-0 mt-0 text-center ls-3 w200 bg-current style1-input text-white" href="{{main_catr}}"> {{_("See All Courses")}}</a>
+					</div>
+					{% block breadcrumbs %}
+    					{% include "templates/includes/breadcrumbs.html" %}
+					{% endblock %}
+					<h2 class="display3-size fw-400 display2-md-size">{{_("Find a perfect")}} <b>{{_("Online Course")}}</b></h2>    
+					<h4 class="text-grey-800 font-xssss fw-500 ml-1 lh-24">{{_("To excel yourself in the driving industry")}}</h4>
+
+					<div class="form-group mt-lg-4 p-0 border-light border bg-white rounded-lg">
+							{% from "roadslink/templates/includes/macros.html" import search %}
+							{% if categories %}
+								{% from "roadslink/templates/includes/macros.html" import category_card %}  
+								{% set category = None %}
+								{% set navigation %}
+									{% for category in categories %}
+										{{ category_card(category.website_title,category.route,category.category_color, category.category_icon) }}
+										{{ cat_name.append( {category.route: category.website_title} ) or '' }}
+				
+									{% endfor %}
+								{% endset %}
+							{% endif %}
+
+							{{ search("col-md-5","col-md-4","col-md-3","search Courses...","1",cat_name,main_catr,main_catr) }}		
+					</div>
+
+					<h4 class="text-grey-800 font-xssss fw-500 ml-1 lh-24"> <b class="text-grey-800 text-dark">{{_("Popular Search")}} :</b> {{_("Psychometric, Driving, English, Safety")}} </h4>
+					
+				</div>
+			</div>
+		</div>
+
+		{% if slideshow %}<!-- slideshow -->
+			{{ web_block(
+				"Slideshow Items",
+				idx=1,
+				values=slideshow,
+				add_section=0,
+				add_container=0,
+				add_row=0,
+				add_div=1,
+				add_top_padding=0,
+				add_bottom_padding=0,
+				add_shade=0,
+				css_class ="",
+				row_class="",
+				div_class="col-lg-12 mb-3",
+				row_div_con_sec_end = "</div>"
+			) }}
+		{% endif %}
+
+		{% if categories %}
+			<div class="col-lg-12 pt-4">
+				<h2 class="fw-400 font-lg">{{_("Trending")}} <b>{{_("Categories")}}</b> 
+				</h2>
+			</div>
+
+			<div class="col-lg-12 mt-2 pt-2 pb-4">
+				<div class="owl-carousel category-slide owl-theme overflow-hidden overflow-visible-xl nav-none">
+					{{navigation}}
+				</div>
+			</div>
+		{% endif %}
+
+		{%if popular %}
+			<div class="col-lg-12 pt-4 ">
+				<h2 class="fw-400 font-lg">{{_("Popular")}} <b>{{_("Courses")}}</b> 
+				</h2>
+			</div>
+
+			<div class="col-lg-12 mt-2 pt-2 pb-4 mb-4">
+				<!--<div class="owl-carousel category-card owl-theme overflow-hidden overflow-visible-xl nav-none"> -->
+					<div class="owl-carousel product-slide owl-theme owl-nav-link dot-style2">
+					
+					{% from "roadslink/templates/includes/macros.html" import course_slider_card %}
+					{% for item in popular %}
+						{{ course_slider_card(item.route,item.website_image,item.category_color,item.item_group,item.item_name,item.rating, item.formatted_price) }}
+					{% endfor %}
+
+				</div>
+			</div>
+
+		{% endif %}
+
+		<div class="mx-auto">
+			<a class="bg-primary-gradiant border-0 text-white fw-600 text-uppercase font-xssss float-left rounded-lg d-inline-block mt-0 p-2 lh-34 text-center ls-3 w200 mt-3" href="{{main_catr}}"> {{_("See All Courses")}}</a>
+		</div>
+
+
+							
+			
+</div>
+
+{% endblock %}

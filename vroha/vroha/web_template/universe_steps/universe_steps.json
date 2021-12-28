@@ -1,0 +1,47 @@
+{
+ "__unsaved": 1,
+ "creation": "2021-09-16 01:42:45.076715",
+ "docstatus": 0,
+ "doctype": "Web Template",
+ "fields": [
+  {
+   "fieldname": "steps",
+   "fieldtype": "Table Break",
+   "label": "Steps",
+   "reqd": 0
+  },
+  {
+   "default": "",
+   "fieldname": "step",
+   "fieldtype": "Data",
+   "label": "Step",
+   "options": "",
+   "reqd": 0
+  },
+  {
+   "default": "primary",
+   "fieldname": "pill_color",
+   "fieldtype": "Select",
+   "label": "Pill Color",
+   "options": "\nprimary\nsecondary\nsuccess\ndanger\nwarning\ninfo\nlight\ndark",
+   "reqd": 0
+  },
+  {
+   "default": "border-primary",
+   "fieldname": "border",
+   "fieldtype": "Select",
+   "label": "Border",
+   "options": "\nborder-primary\nborder-secondary\nborder-success\nborder-danger\nborder-warning\nborder-info\nborder-light\nborder-dark",
+   "reqd": 0
+  }
+ ],
+ "idx": 0,
+ "modified": "2021-09-21 13:42:19.128983",
+ "modified_by": "Administrator",
+ "module": "Roadslink",
+ "name": "Universe steps",
+ "owner": "Administrator",
+ "standard": 1,
+ "template": "",
+ "type": "Section"
+}

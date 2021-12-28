@@ -1,0 +1,35 @@
+{
+ "__islocal": true,
+ "__unsaved": 1,
+ "creation": "2021-09-17 11:38:29.694601",
+ "docstatus": 0,
+ "doctype": "Web Template",
+ "fields": [
+  {
+   "__islocal": 1,
+   "__unsaved": 1,
+   "fieldname": "brands",
+   "fieldtype": "Table Break",
+   "label": "Brands",
+   "reqd": 0
+  },
+  {
+   "__islocal": 1,
+   "__unsaved": 1,
+   "fieldname": "brand",
+   "fieldtype": "Link",
+   "label": "Brand",
+   "options": "Brand",
+   "reqd": 0
+  }
+ ],
+ "idx": 0,
+ "modified": "2021-09-17 11:38:29.694601",
+ "modified_by": "Administrator",
+ "module": "Roadslink",
+ "name": "Universe Brand",
+ "owner": "Administrator",
+ "standard": 1,
+ "template": "",
+ "type": "Section"
+}

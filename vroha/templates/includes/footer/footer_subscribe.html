@@ -1,0 +1,16 @@
+{% if not hide_footer_signup %}
+
+<div class="input-group">
+	<input type="text" id="footer-subscribe-email" placeholder="{{ _('Your email address...') }}" aria-label="{{ _('Your email address...') }}" aria-describedby="footer-subscribe-button" class="form-control bg-greylight border-0 font-xsss fw-500 pl-3">
+	<div class="input-group-append">
+	  <button class="w100 bg-current text-white font-xssss fw-600 style1-input border-0 text-uppercase pl-3 pr-3" type="button">{{ _("Subscribe") }}</button>
+	</div>
+</div>
+
+{% block extension %}
+		{% include "templates/includes/footer/footer_extension.html" %}
+{% endblock %}
+
+
+{% endif %}
+

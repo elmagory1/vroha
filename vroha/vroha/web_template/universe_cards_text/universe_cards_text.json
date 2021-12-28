@@ -1,0 +1,47 @@
+{
+ "__unsaved": 1,
+ "creation": "2021-09-23 05:52:59.827636",
+ "docstatus": 0,
+ "doctype": "Web Template",
+ "fields": [
+  {
+   "fieldname": "steps",
+   "fieldtype": "Table Break",
+   "label": "Steps",
+   "reqd": 0
+  },
+  {
+   "default": "",
+   "fieldname": "heading",
+   "fieldtype": "Data",
+   "label": "Heading",
+   "options": "",
+   "reqd": 0
+  },
+  {
+   "default": "",
+   "fieldname": "text",
+   "fieldtype": "Small Text",
+   "label": "Text",
+   "options": "",
+   "reqd": 0
+  },
+  {
+   "default": "",
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "label": "Image",
+   "options": "",
+   "reqd": 0
+  }
+ ],
+ "idx": 0,
+ "modified": "2021-09-23 06:07:13.100561",
+ "modified_by": "Administrator",
+ "module": "Roadslink",
+ "name": "Universe Cards Text",
+ "owner": "Administrator",
+ "standard": 1,
+ "template": "",
+ "type": "Section"
+}

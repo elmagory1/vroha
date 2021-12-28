@@ -1,0 +1,94 @@
+{
+ "__unsaved": 1,
+ "creation": "2021-09-20 06:43:33.651457",
+ "docstatus": 0,
+ "doctype": "Web Template",
+ "fields": [
+  {
+   "__unsaved": 1,
+   "default": "order-1",
+   "fieldname": "order_image",
+   "fieldtype": "Select",
+   "label": "Order Image",
+   "options": "order-1\norder-2",
+   "reqd": 0
+  },
+  {
+   "__unsaved": 1,
+   "default": "order-2",
+   "fieldname": "order_text",
+   "fieldtype": "Select",
+   "label": "Order Text",
+   "options": "order-1\norder-2",
+   "reqd": 0
+  },
+  {
+   "__unsaved": 1,
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "label": "Image",
+   "reqd": 0
+  },
+  {
+   "default": "primary",
+   "fieldname": "pill_color",
+   "fieldtype": "Select",
+   "label": "Pill Color",
+   "options": "\nprimary\nsecondary\nsuccess\ndanger\nwarning\ninfo\nlight\ndark",
+   "reqd": 0
+  },
+  {
+   "fieldname": "pill_heading",
+   "fieldtype": "Data",
+   "label": "Pill Heading",
+   "reqd": 0
+  },
+  {
+   "fieldname": "main_heading",
+   "fieldtype": "Data",
+   "label": "Main Heading",
+   "reqd": 0
+  },
+  {
+   "fieldname": "sub_heading",
+   "fieldtype": "Small Text",
+   "label": "Sub Heading",
+   "reqd": 0
+  },
+  {
+   "__unsaved": 1,
+   "fieldname": "show_points",
+   "fieldtype": "Check",
+   "label": "Show Points",
+   "reqd": 0
+  },
+  {
+   "fieldname": "points",
+   "fieldtype": "Table Break",
+   "label": "Points",
+   "reqd": 0
+  },
+  {
+   "fieldname": "p_head",
+   "fieldtype": "Data",
+   "label": "Point ",
+   "reqd": 0
+  },
+  {
+   "__unsaved": 1,
+   "fieldname": "p_subhead",
+   "fieldtype": "Small Text",
+   "label": "Sub Head",
+   "reqd": 0
+  }
+ ],
+ "idx": 0,
+ "modified": "2021-09-21 12:53:03.864878",
+ "modified_by": "Administrator",
+ "module": "Roadslink",
+ "name": "Universe left right image",
+ "owner": "Administrator",
+ "standard": 1,
+ "template": "",
+ "type": "Section"
+}

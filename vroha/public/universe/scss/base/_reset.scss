@@ -1,0 +1,370 @@
+
+* {
+    outline: none;
+    padding: 0;
+
+    &::after {
+        margin : 0;
+        padding: 0;
+    }
+
+    &::before {
+        margin : 0;
+        padding: 0;
+    }
+}
+
+body {
+    line-height: 1.75;
+
+    &.fixed {
+        overflow: hidden;
+        position: fixed;
+    } 
+
+
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
+	font-weight:$headings-font-weight;
+}
+ul {
+    padding: 0;
+    margin : 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    // color       : $td;
+    text-decoration: none;
+    outline        : none;
+
+    &:hover,
+    &:focus,
+    &.active {
+        text-decoration: none;
+        outline        : none;
+        color          : $primary;
+    }
+}
+
+b,
+strong,
+.strong {
+    font-weight: 700;
+}
+
+.h-0 {
+    height: 0;
+}
+
+.main-wrap,.main-wrapper {
+    opacity       : 1;
+    transition    : all 0.25s ease-in;
+    overflow      : hidden;
+    position      : relative;
+    z-index       : 1;  
+
+    &.show {
+        opacity: 1;
+    }
+}
+
+.content-body {
+    margin-left  : 65px;
+    margin-top   : 18px;
+    margin-right : 6px;
+    margin-bottom: 45px;
+}
+
+/* checkbox */
+.checkbox {
+	label {
+		display: inline-flex;
+		align-items: center;
+		margin-bottom: 0;
+	}
+	$checkbox-right-margin: 8px;
+
+	.label-area {
+		font-size: $font-xssss;
+	}
+
+	.input-area, .disp-area {
+		display: flex;
+	}
+}
+
+$check-icon: url("data:image/svg+xml, <svg viewBox='0 0 8 7' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M1 4.00001L2.66667 5.80001L7 1.20001' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+
+input[type="radio"] {
+	position: relative;
+	width: 14px !important;
+	height: 14px;
+	margin-right: 8px !important;
+	font-size: 13px;
+	background-repeat: no-repeat;
+	background-position: center;
+	cursor: pointer;
+
+	// Reset browser behavior
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+
+	-webkit-print-color-adjust: exact;
+	color-adjust: exact;
+
+	&:focus {
+		outline: none;
+	}
+
+	&:before {
+		width: 14px;
+		height: 14px;
+		position: absolute;
+		content: ' ';
+		border: 1px solid $gray-400;
+		border-radius: 16px;
+	}
+
+	&:checked::before {
+		background-color: #2490EF;
+		border-radius: 16px;
+		box-shadow: inset 0 0 0 2px white;
+	}
+}
+
+input[type="checkbox"] {
+	position: relative;
+	width: 14px !important;
+	height: 14px;
+	margin-right: 8px !important;
+	background-repeat: no-repeat;
+	background-position: center;
+	border: 1px solid $gray-400;
+	box-sizing: border-box;
+	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+	border-radius: 4px;
+
+	// Reset browser behavior
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+
+	-webkit-print-color-adjust: exact;
+	color-adjust: exact;
+
+	.grid-static-col & {
+		margin-right: 0 !important;
+	}
+
+	&:checked {
+		background-color: #2490EF;
+		background-image: $check-icon, linear-gradient(180deg, #4AC3F8 -124.51%, #2490EF 100%);
+		background-size: 57%, 100%;
+		box-shadow: none;
+		border: none;
+	}
+
+	&:focus {
+		outline: none; // Prevent browser behavior
+		box-shadow: 0 0 0 2px $gray-300;
+	}
+
+	&.disabled-deselected, &:disabled {
+		background-color: $gray-100;
+		box-shadow: inset 0px 1px 7px rgba(0, 0, 0, 0.1);
+		border: 0.5px solid $gray-300;
+		pointer-events: none;
+	}
+
+	&.disabled-selected, &:disabled:checked {
+		background-color: $gray-500;
+		background-image: $check-icon;
+		background-size: 57%;
+		box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+		border: none;
+		pointer-events: none;
+	}
+}
+
+//.frappe-card {
+//	@include card();
+//}
+
+.frappe-control[data-fieldtype="Select"].frappe-control[data-fieldname="color"] {
+	select {
+		padding-left: 40px;
+	}
+
+	.color-box {
+		position: absolute;
+		top: calc(50% - 11px);
+		left: 8px;
+		width: 22px;
+		height: 22px;
+		border-radius: 5px;
+		z-index: 1;
+	}
+}
+
+.frappe-control[data-fieldtype="Select"] .control-input,
+.frappe-control[data-fieldtype="Select"].form-group {
+	position: relative;
+
+	select {
+		/* for Firefox */
+		-moz-appearance: none;
+		/* for Chrome */
+		-webkit-appearance: none;
+	}
+
+	.select-icon {
+		padding-left: inherit;
+		padding-right: inherit;
+		position: absolute;
+		pointer-events: none;
+		//top: 7px;
+		right: 12px;
+
+		&.xs {
+			//top: 3px;
+			right: 10px;
+		}
+
+		.icon {
+			use {
+				stroke: $text-muted;
+			}
+		}
+	}
+
+	.placeholder {
+		padding-left: inherit;
+		padding-right: inherit;
+		position: absolute;
+		pointer-events: none;
+		top: 7px;
+		left: 12px;
+		max-width: 80%;
+
+		&.xs {
+			top: 3px;
+		}
+	}
+}
+
+.ellipsis {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 100%;
+	vertical-align: middle;
+}
+
+.no-border {
+	border: none !important;
+}
+
+.whitespace-nowrap {
+	white-space: nowrap;
+}
+
+.app-change-log-body {
+	h1 {
+		font-size: $font-sm;
+	}
+}
+
+.new-version-log {
+	.new-version-links {
+		padding: 5px 0px;
+	}
+
+	&:not(:last-child) {
+		margin-bottom: 1em;
+	}
+}
+
+.centered {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+}
+
+.hide {
+	display: none !important;
+}
+
+.btn-link {
+	box-shadow: none !important;
+	outline: none;
+	.icon, &:hover {
+		text-decoration: none !important;
+	}
+}
+
+.hidden {
+	@extend .d-none;
+}
+
+.hide-control {
+	@extend .d-none;
+}
+
+.margin {
+	margin: 8px;
+}
+.margin-top {
+	margin-top: 8px;
+}
+.margin-bottom {
+	margin-bottom: 8px;
+}
+.margin-left {
+	margin-left: 8px;
+}
+.margin-right {
+	margin-right: 8px;
+}
+
+// freeze backdrop text
+#freeze {
+	z-index: 1020;
+	bottom: 0;
+	opacity: 0;
+	background-color: $gray-100;
+
+	.freeze-message-container {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		display: grid;
+		place-content: center;
+	}
+
+	.freeze-message {
+		color: $gray-900 !important;
+	}
+}
+
+#freeze.dark {
+	background-color: $gray-900;
+}
+
+#freeze.in {
+	opacity: 0.5;
+}
+
+.msg-box {
+	padding: 30px 15px;
+	text-align: center;
+	color: $text-muted;
+}

@@ -1,0 +1,42 @@
+<div class="header-wrapper pt-2 pb-2 shadow-none layer-after scroll-header pos-fixed">
+	<div class="container">
+		<div class="row">
+			<div class="col-6 col-lg-9 navbar pt-0 pb-0">
+				<a href="{{ url_prefix }}{{ home_page or "/" }}">
+					{%- if brand_html -%}
+						{{ brand_html }}
+					{%- elif banner_image -%}
+					<img src='{{ banner_image }}' height="30px" width="auto"/>
+
+					{%- else -%}
+						<h1 class="fredoka-font ls-3 fw-700 text-current font-xxl">{{ (frappe.get_hooks("brand_html") or [_("Home")])[0] }}</h1>
+					{%- endif -%}
+				</a>
+				
+				<div class="d-none d-xl-block">
+					<ul class="navbar-nav nav-menu text-center">
+						{% include "templates/includes/navbar/navbar_items.html" %}
+					</ul>
+				</div>
+			</div>
+			<div class="col-6 col-lg-3 text-right d-lg-block">
+				{% include "templates/includes/navbar/navbar_search.html" %}
+				{% include "templates/includes/navbar/navbar_login.html" %}
+			</div>
+		</div>
+	</div>
+	<div class="backdrop web-menu d-none"></div>
+	<nav class="navigation web-menu scroll-bar">
+		<div class="container pl-0 pr-0">
+			{% include "templates/includes/navbar/navbar_side.html" %}
+		</div>
+	</nav>
+</div>
+<script>
+	frappe.ready(() => {
+		frappe.setup_search('.dropdown-menusearch');
+	});
+</script>
+
+
+

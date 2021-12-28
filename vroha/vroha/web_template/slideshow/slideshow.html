@@ -1,0 +1,38 @@
+{%- set slideshow = frappe.get_doc('Website Slideshow', website_slideshow) -%}
+{%- set slides = slideshow.slideshow_items -%}
+{%- set slideshow_id = 'id-' + frappe.utils.generate_hash('Slideshow', 12) -%}
+
+
+<div id="{{ slideshow_id }}" class='owl-carousel course-slide owl-theme overflow-hidden {{ "dot-style2 owl-nav-link" if slides | len > 1}} '>
+	{%- for slide in slides -%}
+		<div class="owl-carousel course-slide owl-theme overflow-hidden dot-style2 owl-nav-link pt-lg--10 w-100 aos-init" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="500">
+			<div class="item">
+				<div class="card course-slider rounded-lg border-0 banner-wrap overflow-hidden">
+					<div class="card-image">
+						{% if slide.video %}
+							<video autoplay="" muted="" loop="" id="myVideo">
+								<source src="{{slide.video}}" type="video/mp4">
+							</video>
+						{% else %}
+							<img src="{{slide.image}}" alt="image">
+						{% endif %}
+					</div>
+					<div class="card-body position-absolute align-items-center d-flex h-100">
+						<div class="card-content">
+							<span class="font-xsssss fw-700 pl-3 pr-3 lh-32 text-uppercase rounded-lg ls-2 {{slide.back}} {{slide.text}} d-inline-block  mr-1 mb-2">{{ slide.tag }}</span>
+							<h2 class="display1-size display1-sm-size fw-700 lh-3 text-white ">{{slide.heading}}</h2>    
+							<div class="d-none d-xl-block font-xsss fw-500 text-grey-300 mt-0 mr-5 mb-0">{{slide.description}}</div>
+							<div class="clearfix"></div>
+							<a href="{{slide.url}}" class="bg-primary-gradiant border-0 text-white fw-600 text-uppercase font-xssss float-left rounded-lg d-inline-block mt-0 p-2 lh-34 text-center ls-3 w200 mt-3">{{slide.label}}</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+</div>
+
+
+
+
+

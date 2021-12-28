@@ -1,0 +1,52 @@
+{% set points2 = [] %}
+
+<div class="col-lg-4 sm-mb-4 aos-init" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="500">
+    <span class="font-xssss fw-700 pl-3 pr-3 lh-32 text-uppercase rounded-xl ls-2 alert-{{pill_color}} d-inline-block text-{{pill_color}} mr-1">{{title}}</span>
+    <h2 class="text-grey-900 fw-700 font-xxl pb-3 mb-0 mt-3 d-block lh-3">{{heading}}</h2>
+    <p class="fw-300 font-xss lh-28 text-grey-900">{{subtitle}}</p>
+    <!-- <div class="custom-control custom-switch pl-0">
+        <p class="fw-600 font-xssss lh-28 text-grey-900 d-inline-block pr-5 mr-3">Bill Monthly</p>
+        <input type="checkbox" class="custom-control-input dark-mode-switch" id="darkmodeswitch1">
+        <label class="custom-control-label bg-success mt-1" for="darkmodeswitch1"></label>
+        <p class="fw-600 font-xssss lh-28 text-grey-900 d-inline-block">Bill Anually</p>
+    </div> -->
+</div>
+<div class="col-lg-7 offset-lg-1">
+    <div class="row">
+        
+        <div class="col-lg-6 aos-init" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="500">
+            <div class="card p-4 mb-4 bg-primary border-0 shadow-xss rounded-lg">
+                <div class="card-body">
+                    <h2 class="text-white font-xsssss fw-700 text-uppercase ls-3 ">{{little_1}}</h2>
+                    <h1 class="display2-size text-white fw-700">{{main_1}}</h1>
+                    <h4 class="text-white fw-500 mb-4 lh-24 font-xsss">{{describe_1}}</h4>
+                    {% for point in points %}
+                        {% if point.p_title1 %}
+                            <h4 class="text-white fw-600 font-xsss mb-2"><i class="ti-check mr-2 text-white"></i>{{point.p_title1}}</h4>
+                        {% endif %}
+                        {{ points2.append( point.p_title2 ) or '' }}
+                    {% endfor %}
+                    <a href="{{url_1}}" class="btn btn-block border-0 w-100 bg-white p-3 text-primary fw-600 rounded-lg d-inline-block font-xssss btn-light">{{action_1}}</a>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 aos-init" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="500">
+            <div class="card p-4 mb-4 bg-white border-0 shadow-lg rounded-lg">
+                <div class="card-body">
+                    <h2 class="text-grey-900 font-xsssss fw-700 text-uppercase ls-3 ">{{little_2}}</h2>
+                    <h1 class="display2-size text-grey-900 fw-700">{{main_2}}</h1>
+                    <h4 class="text-grey-900 fw-500 mb-4 lh-24 font-xsss">{{describe_2}}</h4>
+                    {% for point in points2 %}
+                        <h4 class="text-grey-900 fw-600 font-xsss mb-2"><i class="ti-check mr-2 text-grey-900 fw-600"></i>{{point}}</h4>
+                    {% endfor %}
+                    <a href="{{url_2}}" class="btn btn-block border-0 w-100 bg-primary p-3 text-white fw-600 rounded-lg d-inline-block font-xssss btn-light">{{action_2}}</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

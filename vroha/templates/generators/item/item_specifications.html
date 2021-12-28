@@ -1,0 +1,13 @@
+{% if doc.website_specifications -%}
+		{% for d in doc.website_specifications -%}
+			<div class="d-flex uniform-flex">
+				<div class="d-flex bullet-flex">
+					<i class="fas fa-check-circle fa-2x"></i>
+					<h3>{{ d.label }}</h3>
+
+				</div>
+				<div class="break"></div>
+				<p class="text-muted">{{ d.description }}</p>
+			</div>
+		{%- endfor %}
+{%- endif %}

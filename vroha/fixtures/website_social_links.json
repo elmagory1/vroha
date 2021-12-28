@@ -1,0 +1,105 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Website social links",
+  "modified": "2021-12-27 07:13:54.871813",
+  "name": "Website social links",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "social_links": [
+   {
+    "background": "bg-facebook",
+    "font": null,
+    "font_desk": "fa-phone",
+    "label": "+97143607073",
+    "parent": "Website social links",
+    "parentfield": "social_links",
+    "parenttype": "Website social links",
+    "show_desk": 1,
+    "show_web": 0,
+    "title": "Mobile",
+    "url": "tel:+97143607073"
+   },
+   {
+    "background": "bg-facebook",
+    "font": null,
+    "font_desk": "fa-envelope",
+    "label": "hi@roadslink.com",
+    "parent": "Website social links",
+    "parentfield": "social_links",
+    "parenttype": "Website social links",
+    "show_desk": 1,
+    "show_web": 0,
+    "title": "Email",
+    "url": "hi@roadslink.com"
+   },
+   {
+    "background": "bg-facebook",
+    "font": null,
+    "font_desk": "fa-globe",
+    "label": "https://roadslink.com",
+    "parent": "Website social links",
+    "parentfield": "social_links",
+    "parenttype": "Website social links",
+    "show_desk": 1,
+    "show_web": 0,
+    "title": "Website",
+    "url": "https://roadslink.com"
+   },
+   {
+    "background": "bg-facebook",
+    "font": "ti-facebook",
+    "font_desk": "fa-facebook",
+    "label": "https://facebook.com/roadslink",
+    "parent": "Website social links",
+    "parentfield": "social_links",
+    "parenttype": "Website social links",
+    "show_desk": 1,
+    "show_web": 1,
+    "title": "Facebook",
+    "url": "https://facebook.com/roadslink"
+   },
+   {
+    "background": "bg-twiiter",
+    "font": "ti-twitter-alt",
+    "font_desk": "fa-twitter",
+    "label": "https://twitter.com/roadslink",
+    "parent": "Website social links",
+    "parentfield": "social_links",
+    "parenttype": "Website social links",
+    "show_desk": 0,
+    "show_web": 1,
+    "title": "Twitter",
+    "url": "https://twitter.com/roadslink"
+   },
+   {
+    "background": "bg-instagram",
+    "font": "ti-instagram",
+    "font_desk": "fa-instagram",
+    "label": "https://instagram.com/roadslink",
+    "parent": "Website social links",
+    "parentfield": "social_links",
+    "parenttype": "Website social links",
+    "show_desk": 1,
+    "show_web": 1,
+    "title": "Instagram",
+    "url": "https://instagram.com/roadslink"
+   },
+   {
+    "background": "bg-linkedin",
+    "font": "ti-linkedin",
+    "font_desk": null,
+    "label": "https://linkedin.com/roadslink",
+    "parent": "Website social links",
+    "parentfield": "social_links",
+    "parenttype": "Website social links",
+    "show_desk": 0,
+    "show_web": 1,
+    "title": "Linkedin",
+    "url": "https://linkedin.com/roadslink"
+   }
+  ],
+  "welcome_text": "Welcome to Roadslink"
+ }
+]

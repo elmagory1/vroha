@@ -8,6 +8,10 @@ app_icon = "octicon octicon-file-directory"
 app_color = "grey"
 app_email = "desk@vroha.com"
 app_license = "copyright"
+app_logo_url = "/assets/vroha/images/logo.svg"
+
+
+
 
 # Includes in <head>
 # ------------------
@@ -15,10 +19,12 @@ app_license = "copyright"
 # include js, css files in header of desk.html
 # app_include_css = "/assets/vroha/css/vroha.css"
 # app_include_js = "/assets/vroha/js/vroha.js"
+app_include_js = "deskcustom.bundle.js"
 
 # include js, css files in header of web template
-# web_include_css = "/assets/vroha/css/vroha.css"
-# web_include_js = "/assets/vroha/js/vroha.js"
+#"/assets/vroha/css/custom.css",
+web_include_css = []
+web_include_js = ["/assets/vroha/js/vroha.js","controls.bundle.js", "dialog.bundle.js"]
 
 # include custom scss in every website theme (without file extension ".scss")
 # website_theme_scss = "vroha/public/scss/website"
@@ -31,21 +37,41 @@ app_license = "copyright"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-# doctype_js = {"doctype" : "public/js/doctype.js"}
+doctype_js = {
+    "Website Slideshow" : "public/js/Website Slideshow.js",
+	"Web Page Version": "public/js/frappe/utils/web_template.js",
+	"Customize Form": "public/js/Customize Form.js",
+	"Custom Field": "public/js/Custom Field.js",
+	"User": "public/js/User.js"
+}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
+
+website_context = {
+	"favicon": 	"assets/vroha/images/favicon.svg",
+	"splash_image": "assets/vroha/images/logo.svg"
+}
+
+update_website_context = 'vroha.overrides.update_context.website_context'
+
+
+email_brand_image = "assets/vroha/images/logo.jpg"
 
 # Home Pages
 # ----------
 
 # application home page (will override Website Settings)
-# home_page = "login"
+home_page = "home"
 
 # website user home page (by Role)
 # role_home_page = {
 #	"Role": "home_page"
 # }
+
+website_redirects = [
+    {"source": "/index", "target": "/home"}
+]
 
 # Generators
 # ----------
@@ -65,14 +91,8 @@ app_license = "copyright"
 # Installation
 # ------------
 
-# before_install = "vroha.install.before_install"
-# after_install = "vroha.install.after_install"
-
-# Uninstallation
-# ------------
-
-# before_uninstall = "vroha.uninstall.before_uninstall"
-# after_uninstall = "vroha.uninstall.after_uninstall"
+#before_install = "vroha.setup.install.before_install"
+after_install = "vroha.setup.install.after_install"
 
 # Desk Notifications
 # ------------------
@@ -96,9 +116,18 @@ app_license = "copyright"
 # ---------------
 # Override standard doctype classes
 
-# override_doctype_class = {
-# 	"ToDo": "custom_app.overrides.CustomToDo"
-# }
+override_doctype_class = {
+ 	"Navbar Settings": "vroha.overrides.navbar_settings.CustomNavbarSettings",
+	"User": "vroha.overrides.user.CustomUser",
+	"Customer": "vroha.overrides.customer.CustomCustomer",
+	"Supplier": "vroha.overrides.supplier.CustomSupplier",
+	"Contact": "vroha.overrides.contact.CustomContact",
+	"Address": "vroha.overrides.address.CustomAddress",
+	"Item Group": "vroha.overrides.item_group.CustomItemGroup",
+	"Web Page": "vroha.overrides.web_page.CustomWebPage",
+	"Web Form": "vroha.overrides.web_form.CustomWebForm",
+	"Customize Form": "vroha.overrides.customize_form.CustomCustomizeForm"
+}
 
 # Document Events
 # ---------------
@@ -140,10 +169,15 @@ app_license = "copyright"
 
 # Overriding Methods
 # ------------------------------
-#
-# override_whitelisted_methods = {
-# 	"frappe.desk.doctype.event.event.get_events": "vroha.event.get_events"
-# }
+#/Users/bagback/stuffs/projects/sunil/sunil/apps/frappe/frappe/core/doctype/user/user.py
+override_whitelisted_methods = {
+ 	#"frappe.desk.doctype.event.event.get_events": "vroha.event.get_events"
+    "erpnext.portal.product_configurator.utils.get_products_html_for_website": "vroha.overrides.whitelisted.get_products_html_for_website",
+    "frappe.translate.get_all_languages": "vroha.overrides.whitelisted.get_all_languages",
+    "frappe.custom.doctype.custom_field.custom_field.get_fields_label": "vroha.overrides.whitelisted.get_fields_label",
+    "frappe.core.doctype.user.user.sign_up": "vroha.overrides.whitelisted.sign_up",
+    "frappe.integrations.doctype.google_contacts.google_contacts.sync": "vroha.overrides.whitelisted.sync"
+}
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
@@ -188,3 +222,50 @@ app_license = "copyright"
 # 	"vroha.auth.validate"
 # ]
 
+fixtures = [
+    {
+    	"doctype":"Property Setter",
+       	"filters": {
+            "name": ["in", ["Item-slideshow-hidden", "Item-slideshow-read_only", "Item Group-slideshow-hidden", "Item Group-slideshow-read_only", "Item-main-max_attachments", "Item-item_name-translatable", "User-mobile_no-read_only", "User-send_welcome_email-default", "User-email-mandatory_depends_on", "User-email-reqd", "User-mobile_no-mandatory_depends_on", "User-mobile_no-hidden", "Contact Phone-phone-reqd", "Contact Phone-phone-read_only", "Contact Phone-phone-unique", "Contact Phone-phone-in_list_view", "User-phone-unique", "User-phone-hidden", "User-phone-read_only", "Address-phone-options", "Address-phone-unique", "Address-phone-read_only", "Customer-customer_name-read_only_depends_on", "Customer-customer_name-fetch_from", "Customer-gender-fetch_from"]]
+		}
+    },
+
+    {
+        "doctype": "Portal Settings"
+	},
+
+    {
+		"doctype": "Website Settings"
+	},
+
+    {
+		"doctype": "Products Settings"
+	},
+
+    {
+		"doctype": "Contact Us Settings"
+	},
+
+    {
+		"doctype": "Website social links"
+	},
+
+    {
+        "doctype": "Energy Point Settings"
+	},
+
+
+    {
+    	"doctype": "Web Form",
+    	"filters": {
+    		"name": ["in", ["addresses", "issues"]]
+    	}
+    },
+
+    {
+		"doctype": "Web Page",
+		"filters": {
+			"name": ["in", ["homepage","about","contact", "members","psychometric","drms","english","management","traffic","training"]]
+		}
+	}
+]

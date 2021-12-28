@@ -1,0 +1,23 @@
+{
+ "__unsaved": 1,
+ "creation": "2021-09-19 17:33:54.814953",
+ "docstatus": 0,
+ "doctype": "Web Template",
+ "fields": [
+  {
+   "fieldname": "video",
+   "fieldtype": "Data",
+   "label": "Video",
+   "reqd": 0
+  }
+ ],
+ "idx": 0,
+ "modified": "2021-09-20 00:08:09.186307",
+ "modified_by": "Administrator",
+ "module": "Roadslink",
+ "name": "Universe Embed Video",
+ "owner": "Administrator",
+ "standard": 1,
+ "template": "",
+ "type": "Section"
+}

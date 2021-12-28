@@ -1,0 +1,257 @@
+{% extends "templates/webform.html" %}
+
+{% block title %}
+	{{ _(title) }}
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block breadcrumbs %}
+	{% if has_header and login_required %}
+		{% include "templates/includes/breadcrumbs.html" %}
+	{% endif %}
+{% endblock %}
+
+{% block header_actions %}
+{% endblock %}
+
+{% macro container_attributes() %}
+	data-web-form="{{ name }}" data-web-form-doctype="{{ doc_type }}" data-login-required="{{ frappe.utils.cint(login_required and frappe.session.user=='Guest') }}" data-is-list="{{ frappe.utils.cint(is_list) }}" data-allow-delete="{{ allow_delete }}" data-has-perm="{{ apply_document_permissions }}"
+{% endmacro %}
+
+{% block page_content %}
+
+	<div class="main-wrapper">
+		<!-- navigation -->
+
+		<nav class="navigation filter-menu">
+            <div class="container scroll-bar child-scroll-cont">
+				<div class="d-flex justify-content-between align-items-center">
+					<a href="#" class="mb-4 close-filter d-lg-none"><i class="ti-close bg-grey btn-round-sm font-xssss fw-700 text-dark ml-2 mr-2 "></i></a>
+				</div>
+
+				<div class="card mb-5 rounded-xxl border-lite widget-side scroll-hite">
+					<div class="card-body d-block text-left pt-1 scroll-bar child-scroll-cont-nohide">
+						<div class="mb-2">
+							<div class="filter-label">
+								{{_("Go To")}}
+							</div>
+
+							<div class="filter-options">
+								<a class="font-xsss fw-600 w-100 text-grey-800 ml-0 switch-to-desk d-none" href="/app">
+									<u>{{ _("Switch To Desk") }}</u><i class="ti-arrow-top-right fw-600 font-xssss text-blue ml-1"></i>
+								</a>
+								{% if do_elearn %}
+									<a class="font-xsss fw-600 w-100 text-grey-800 d-inline-block ml-0" href="/elearn">
+										<u>{{ _("Access Elearning") }}</u><i class="ti-arrow-top-right fw-600 font-xssss text-blue ml-1"></i>
+									</a>
+								{% endif %}
+
+								<a class="font-xsss fw-600 w-100 text-grey-800 d-inline-block ml-0" href="/packages">
+									<u>{{ _("Partner Packages") }}</u><i class="ti-arrow-top-right fw-600 font-xssss text-blue ml-1"></i>
+								</a>
+
+								<a class="font-xsss fw-600 w-100 text-grey-800 d-inline-block ml-0" href="/me">
+									<u>{{ _("My Dashboard") }}</u><i class="ti-arrow-top-right fw-600 font-xssss text-blue ml-1"></i>
+								</a>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+
+				<div class="card mb-5 rounded-xxl border-lite widget-side scroll-hite">
+					<div class="card-body d-block text-left pt-1 scroll-bar child-scroll-cont-nohide">
+						<div class="mb-2">
+							<div class="filter-label">
+								{{_("My Menu")}}
+							</div>
+
+								<div class="filter-options">
+									{% for item in sidebar_items_main -%}
+										<a class="font-xsss fw-600 w-100 text-grey-800 d-inline-block ml-0" href="{{ item.route }}"
+											{% if item.target %}target="{{ item.target }}"{% endif %}>
+											{{ _(item.title or item.label) }}
+										</a>
+									{% endfor %}
+								</div>
+						</div>
+						
+					</div>
+				</div>
+
+				<div class="card mb-5 rounded-xxl border-lite widget-side scroll-hite">
+					<div class="card-body d-block text-left pt-1 scroll-bar child-scroll-cont-nohide">
+						<div class="mb-2">
+							<div class="filter-label">
+								{{_("My Settings")}}
+							</div>
+
+								<div class="filter-options">
+										<a class="font-xsss fw-600 w-100 text-grey-800 d-inline-block ml-0" href="/update-password">
+											{{ _("Reset Password") }}
+										</a>
+										<a class="font-xsss fw-600 w-100 text-grey-800 d-inline-block ml-0" href="/update-profile?name={{ user }}">
+											{{ _("Update Profile") }}
+										</a>
+										<a class="font-xsss fw-600 w-100 text-grey-800 d-inline-block ml-0" href="/third_party_apps">
+											{{ _("Manage Apps") }}
+										</a>
+								</div>
+						</div>
+						
+					</div>
+				</div>
+
+			</div>
+		</nav>
+
+
+		<div class="main-content no-bg include-left">
+			<div class="middle-sidebar-bottom">
+				<div class="middle-sidebar-left middle-sidebar-left-full">
+
+					<div class="card w-100 border-0 bg-white shadow-xs p-0 mb-4">
+						<div class="form-title card-body p-4 w-100 bg-current border-0 d-flex rounded-lg">
+							<!-- <a href="#" id="linkhead" class="d-inline-block mt-2" title="Go Back"><i class="ti-arrow-left font-sm text-white"></i></a>
+							<a href="/me" class="d-inline-block mt-2 ml-2" title="My Account"><i class="ti-home font-sm text-white"></i></a> -->
+							<div>
+								<a href="#" class="mb-4 filter-show d-lg-none"><i class="ti-menu bg-blue-gradiant btn-round-sm font-xssss fw-700 text-white ml-2 mr-2 "></i></a>
+							</div>
+							<h4 class="font-xs text-white fw-600 ml-1 mb-0 mt-2">{{ _(title) }}</h4>
+						</div>
+
+						<div class="form-actions">
+							{% if is_list %}
+							<div class="col-lg-12 justify-content-end d-flex list-view-actions pt-3"></div>
+							{% else %}
+							<div class="col-lg-12 justify-content-end d-flex web-form-actions pt-3"></div>
+							{% endif %}
+						</div>
+
+						<div class="card-body p-lg-5 p-4 w-100 border-0">
+							{% if is_list %}
+								{# web form list #}
+								<div class="web-form-wrapper" {{ container_attributes() }}></div>
+								<div id="list-filters" class="row"></div>
+								<div id="datatable" class="pt-4"></div>
+								<div class="list-view-footer text-right"></div>
+							{% else %}
+								{# web form #}
+								<div role="form">
+									<div id="introduction"></div>
+									<div class="web-form-wrapper" {{ container_attributes() }}></div>
+									<div class="web-form-footer pull-right"></div>
+								</div>
+
+							{% if show_attachments and not frappe.form_dict.new and attachments %}
+							<div class="attachments">
+								<h5>{{ _("Attachments") }}</h5>
+								{% for attachment in attachments %}
+								<div class="attachment">
+									<a class="no-underline attachment-link" href="{{ attachment.file_url }}" target="blank">
+										<div class="row">
+											<div class="col-9">
+												<span class="file-name">{{ attachment.file_name }}</span>
+											</div>
+											<div class="col-3">
+												<span class="pull-right file-size">{{ attachment.file_size }}</span>
+											</div>
+										</div>
+									</a>
+								</div>
+								{% endfor %}
+							</div>
+							{% endif %} {# attachments #}
+
+							{% if allow_comments and not frappe.form_dict.new and not is_list -%}
+							<div class="comments mt-6">
+								<h3>{{ _("Comments") }}</h3>
+								{% include 'templates/includes/comments/comments.html' %}
+							</div>
+							{%- endif %} {# comments #}
+
+							{% endif %}
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock page_content %}
+
+{%- block footer -%}{%- endblock -%}
+
+{% block page_footer %}
+{% endblock %}
+
+
+
+{% block script %}
+	<script>
+		frappe.boot = {
+			sysdefaults: {
+				float_precision: parseInt("{{ frappe.get_system_settings('float_precision') or 3 }}"),
+				date_format: "{{ frappe.get_system_settings('date_format') or 'yyyy-mm-dd' }}",
+			}
+		};
+		// for backward compatibility of some libs
+		frappe.sys_defaults = frappe.boot.sysdefaults;
+		frappe._messages = {{ translated_messages }};
+		$(".file-size").each(function() {
+			$(this).text(frappe.form.formatters.FileSize($(this).text()));
+		});
+	</script>
+
+	{% if is_list %}
+		{# web form list #}
+		<script type="text/javascript" src="/assets/frappe/node_modules/moment/min/moment-with-locales.min.js"></script>
+		<script type="text/javascript" src="/assets/frappe/node_modules/moment-timezone/builds/moment-timezone-with-data.min.js"></script>
+		{{ include_script("web_form.bundle.js") }}
+	{% else %}
+		{# web form #}
+		<script type="text/javascript" src="/assets/frappe/node_modules/moment/min/moment-with-locales.min.js"></script>
+		<script type="text/javascript" src="/assets/frappe/node_modules/moment-timezone/builds/moment-timezone-with-data.min.js"></script>
+		<script type="text/javascript" src="/assets/frappe/node_modules/vue/dist/vue.js"></script>
+		<script>
+			Vue.prototype.__ = window.__;
+			Vue.prototype.frappe = window.frappe;
+		</script>
+		{{ include_script("web_form.bundle.js") }}
+		<script>
+			$( "#linkhead" ).on( "click", function() {
+				window.history.back();
+
+			});
+
+			{% if client_script %}
+				frappe.init_client_script = () => {
+					try {
+						{{ client_script }} //custom code input from form doctype
+					} catch(e) {
+						console.error('Error in web form client script');
+						console.error(e);
+					}
+				}
+			{% endif %}
+
+			{% if script is defined %}
+				{{ script }}
+			{% endif %}
+		</script>
+	{% endif %}
+
+{% endblock script %}
+
+{% block style %}
+	<style>
+		{% if style is defined %}
+			{{ style }}
+		{% endif %}
+		{% if custom_css %}
+			{{ custom_css }}
+		{% endif %}
+	</style>
+{% endblock %}

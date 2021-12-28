@@ -1,0 +1,95 @@
+/*rtl:begin:ignore*/
+@import "~air-datepicker/dist/css/datepicker.min";
+/*rtl:end:ignore*/
+
+.datepicker {
+	direction: ltr;
+	font-family: inherit;
+	z-index: 9999 !important;
+	background: white;
+	color: $gray-900;
+	border-radius: $border-radius-base;
+	border: 1px solid $border-color;
+
+	&--nav {
+		border-bottom: 1px solid $border-color;
+	}
+
+	&--time-current-hours, &--time-current-minutes, &--time-current-seconds {
+		font-family: inherit;
+		&:after {
+			color: $gray-900;
+			background-color: $gray-100;
+		}
+	}
+
+	&--day-name {
+		color: $gray-900;
+	}
+
+	&--cell {
+		&.-current- {
+			color: var(--theme-color);
+
+			&.-in-range- {
+				color: var(--theme-color);
+			}
+		}
+
+		&.-range-from-, &.-range-to- {
+			border: 1px solid fade(var(--theme-color), 30%);
+			background: fade(var(--theme-color), 10%);
+		}
+
+		&.-selected-, &.-current-.-selected- {
+			background: var(--theme-color);
+		}
+
+		&.-in-range- {
+			background: fade(var(--theme-color), 5%);
+		}
+
+		&.-in-range-.-focus- {
+			background: fade(var(--theme-color), 10%);
+		}
+
+		&.-focus- {
+			background-color: $gray-100;
+		}
+
+		&.-selected-.-focus- {
+			background: fade(var(--theme-color), 90%);
+		}
+	}
+
+	&--time, &--buttons {
+		border-top: 1px solid $border-color;
+	}
+
+	&--time-row {
+		background-image: linear-gradient(to right, var(--theme-color), var(--theme-color));
+		background-repeat: no-repeat;
+		background-size: 100% 1px;
+		background-position: left 50%;
+	}
+
+	&--time-row:first-child {
+		margin: 0;
+	}
+
+	&--pointer {
+		background: $gray-100;
+		border-top-right-radius: 2px;
+		border: 1px $border-color;
+		border-style: solid solid hidden hidden;
+	}
+
+	&--button {
+		color: var(--brand-color);
+		&:hover {
+			color: var(--text-color);
+			background-color: $gray-100;
+		}
+	}
+}
+

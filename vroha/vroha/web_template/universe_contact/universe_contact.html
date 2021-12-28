@@ -1,0 +1,46 @@
+
+            <div class="col-lg-10">
+                <div class="contact-wrap bg-white shadow-lg rounded-lg position-relative">
+                    <h1 class="text-grey-900 fw-700 display3-size mb-5 lh-1">{{title}}</h1>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12">
+                                <div class="form-group mb-3 icon-input">
+                                    <i class="ti-package font-xs text-grey-400"></i>
+                                    <select name="subject" class="form-control style2-select bg-transparent pl-5 text-info"> 
+                                        {% if query_options -%}
+                                            {% for option in query_options.split("\n") -%}
+                                                <option value="{{ option }}" class="text-grey-700">{{ option }}</option>
+                                            {%- endfor %}
+                                        {% else %}
+                                            <option value="General" class="text-grey-700">{{ _('General')}}</option>
+                                        {% endif %}
+                                        
+                                    </select>
+                                </div>        
+                            </div>
+
+                            <div class="col-lg-6 col-md-12">
+                                <div class="form-group mb-3">
+                                    <input type="text" name="email" class="form-control style2-input bg-color-none text-grey-700" placeholder="{{ _('Your email address') }}" />                        
+                                </div>        
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group mb-3 md-mb25">
+                                    <textarea name="message" class="w-100 h125 style2-textarea p-3 form-control">Message</textarea>
+                                </div>
+                               <!---<div class="form-check text-left mt-3 float-left md-mb25">
+                                    <input type="checkbox" class="form-check-input mt-2" id="exampleCheck1">
+                                    <label class="form-check-label font-xsss text-grey-500 fw-500" for="exampleCheck1">I agree to the term of this <a href="#" class="text-grey-600 fw-600">Privacy Policy</a></label>
+                                </div> -->
+                                <div class="form-group">
+                                    <button class="btn-send rounded-lg style1-input float-right bg-current text-white text-center font-xss fw-500 border-2 border-0 p-0 w175">{{ _("Send") }}</button>
+                                </div>
+                            </div>
+                        </div>       
+                </div>
+            </div>
+
+            <script>
+                {% include "templates/includes/contact.js" %}
+            </script>

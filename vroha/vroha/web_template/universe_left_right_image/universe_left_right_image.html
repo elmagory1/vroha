@@ -1,0 +1,16 @@
+            <div class="col-lg-5 mb-4 {{order_image}} d-none d-lg-block my-auto"><img src="{{image}}" alt="image" class="rounded-lg img-fluid shadow-xs border-primary border p-2"></div>
+            <div class="col-lg-6 offset-1 page-title style1 {{order_text}}">
+               <span class="font-xsss fw-700 pl-3 pr-3 lh-32 mt-4 text-uppercase rounded-xl ls-2 alert-{{pill_color}} d-inline-block text-{{pill_color}} mr-1">{{pill_heading}}</span>
+
+               <h2 class="fw-700 text-grey-800 display1-size display2-md-size lh-3 pt-3">{{main_heading}}</h2>
+                <p class="font-xss fw-400 text-grey-900 lh-28 mt-0 mb-0  mt-1 w-75 w-xs-90 beauty-para">{{sub_heading}}</p>
+                {% if show_points %}
+                   {% for point in points %}
+                       <h4 class="fw-600 font-xs mt-5 mb-2 d-flex align-items-center"><i class="ti-check left-right-bullet alert-{{pill_color}} text-{{pill_color}} mr-2"></i> {{point.p_head}}</h4>
+                       {% if point.p_subhead %}
+                           <p class="fw-300 font-xss lh-28 text-grey-800 mt-0 ml-4 pl-3 w-75 w-xs-90">{{point.p_subhead}}</p>
+                       {% endif %}
+                   {% endfor %}
+                {% endif %}
+                
+            </div>

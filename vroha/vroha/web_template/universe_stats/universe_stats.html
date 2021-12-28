@@ -1,0 +1,18 @@
+<div class="col-xl-10 col-lg-12 pb-lg--5 aos-init" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="500">
+    <div class="row ml-auto mr-auto">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+            <h2 class="display4-size display4-md-size fw-700 open-font text-warning mb-0">{{rating}}</h2>
+            <h4 class="star star-rate d-block w-100 text-left mt-2 font-xl" style="--rating: {{rating}}">
+            </h4>
+        </div>
+
+        {% for stat in stats%}
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                <h2 class="display4-size display4-md-size fw-700 open-font {{stat.text}} mb-0">{{stat.value}}<span class="font-xxl">{{stat.subscript}}</span> <i class="feather-{{stat.arrow_type}} {{stat.text}} font-xl"></i></h2>
+                <h4 class="font-xsss text-grey-500 fw-600 mt-2"> {{stat.subtitle}}</h4>
+                <h4 class="font-xsss text-grey-900 fw-700 mt-2">{{stat.title}}</h4>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+

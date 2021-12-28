@@ -1,0 +1,52 @@
+{
+ "__unsaved": 1,
+ "creation": "2021-09-21 15:27:26.144563",
+ "docstatus": 0,
+ "doctype": "Web Template",
+ "fields": [
+  {
+   "__unsaved": 1,
+   "fieldname": "accord_name",
+   "fieldtype": "Data",
+   "label": "Accordion Name",
+   "reqd": 0
+  },
+  {
+   "__unsaved": 1,
+   "fieldname": "items",
+   "fieldtype": "Table Break",
+   "label": "Items",
+   "reqd": 0
+  },
+  {
+   "__unsaved": 1,
+   "fieldname": "heading",
+   "fieldtype": "Data",
+   "label": "Heading",
+   "reqd": 0
+  },
+  {
+   "__unsaved": 1,
+   "fieldname": "headers",
+   "fieldtype": "Data",
+   "label": "Table Header",
+   "reqd": 0
+  },
+  {
+   "__unsaved": 1,
+   "fieldname": "details",
+   "fieldtype": "Small Text",
+   "label": "Details",
+   "reqd": 0
+  }
+ ],
+ "idx": 0,
+ "modified": "2021-09-21 18:35:41.680287",
+ "modified_by": "Administrator",
+ "module": "Roadslink",
+ "name": "Universe Stars",
+ "owner": "Administrator",
+ "standard": 1,
+ "template": "",
+ "type": "Section"
+}

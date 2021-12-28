@@ -1,0 +1,64 @@
+{
+ "actions": [],
+ "autoname": "format:{web_page}-{language}",
+ "creation": "2021-10-01 11:44:23.011416",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "web_page",
+  "refresh_but",
+  "language",
+  "page_blocks"
+ ],
+ "fields": [
+  {
+   "fieldname": "web_page",
+   "fieldtype": "Link",
+   "label": "Web Page",
+   "options": "Web Page"
+  },
+  {
+   "fieldname": "language",
+   "fieldtype": "Link",
+   "label": "Language",
+   "options": "Language"
+  },
+  {
+   "fieldname": "page_blocks",
+   "fieldtype": "Table",
+   "label": "Web Page Block",
+   "options": "Web Page Block"
+  },
+  {
+   "fieldname": "refresh_but",
+   "fieldtype": "Button",
+   "label": "Refresh"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2021-10-01 18:23:35.209822",
+ "modified_by": "Administrator",
+ "module": "Roadslink",
+ "name": "Web Page Version",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
