@@ -21,19 +21,16 @@ import "frappe/public/js/frappe/model/meta.js";
 import "frappe/public/js/frappe/model/model.js";
 import "frappe/public/js/frappe/model/perm.js";
 
-import "./bootstrap-4-web.bundle"; 
-// copy to roads as it contains designs for dialog annd dropdown and modal and has nothing to do with bootstrap bundle js
+import "./bootstrap-4-web.bundle";
+// copy to vroha as it contains designs for dialog annd dropdown and modal and has nothing to do with bootstrap bundle js
 // dont get confuse with the name as main bootstrap bundle is jquery-bootstrap which is at the top attached already.
 
 
-import "./roadslink.js";
-// copy to roads as it serves basic main.js for website hence i need to customize it.
+import "./vroha.js";
+// copy to vroha as it serves basic main.js for website hence i need to customize it.
 
 import "frappe/public/js/frappe/socketio_client.js";
 
 import "./website_utils";
 import "./shopping_cart";
-// contains basic js functions for shopping cart and some website utils like send message and subscribe. so i copied it roads, might need to customize
-
-
-
+// contains basic js functions for shopping cart and some website utils like send message and subscribe. so i copied it vroha, might need to customize

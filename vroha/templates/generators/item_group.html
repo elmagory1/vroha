@@ -21,7 +21,7 @@
                     <a href="/{{ doc.route }}" class="clear-filters mb-4 btn p-2 w100 rounded-xl bg-current font-xsssss fw-700 text-white">{{ _('Clear All') }}</a>
                     <a href="#" class="mb-4 close-filter d-lg-none"><i class="ti-close bg-grey btn-round-sm font-xssss fw-700 text-dark ml-2 mr-2 "></i></a>
                 </div>
-                
+
                 {% for field_filter in field_filters %}
                     {%- set item_field =  field_filter[0] %}
                     {%- set values =  field_filter[1] %}
@@ -32,7 +32,7 @@
                                 <div class="filter-label">
                                     {{ item_field.label }}
                                 </div>
-        
+
                                 {% if values %}
                                     <div class="filter-options">
                                         {% for value in values %}
@@ -46,7 +46,7 @@
                                     <i class="text-muted">{{ _('No values') }}</i>
                                 {% endif %}
                             </div>
-                            
+
                         </div>
                     </div>
                 {% endfor %}
@@ -72,7 +72,7 @@
                                     <i class="text-muted">{{ _('No values') }}</i>
                                 {% endif %}
                             </div>
-                            
+
                         </div>
                     </div>
                 {% endfor %}
@@ -90,7 +90,7 @@
 
                     <div class="col-lg-12 mb-3">
                         <div class="card rounded-xxl mt-4 border-0 bg-no-repeat bg-image-contain banner-wrap">
-                            
+
                             <div class="card-body p-4">
                                 {% if no_filter_side.exist == 1 %}
                                     <span class="filter-show p-0 btn p-2 lh-24 w100 ml-1 ls-3 d-inline-block rounded-xl bg-current font-xsssss fw-700 ls-lg text-white d-lg-none">Open Filters</span>
@@ -99,11 +99,11 @@
                                 {% block breadcrumbs %}
                                     {% include "templates/includes/breadcrumbs.html" %}
                                 {% endblock %}
-                                <h2 class="display3-size fw-400 display2-md-size"><b>{{_(title)}}</b></h2>    
+                                <h2 class="display3-size fw-400 display2-md-size"><b>{{_(title)}}</b></h2>
                                 <h4 class="text-grey-800 font-xsss fw-500 lh-24">{{_(description | striptags)}}</h4>
-            
+
                                 <div class="form-group mt-lg-4 border-light border bg-white rounded-lg p-0">
-                                        {% from "roadslink/templates/includes/macros.html" import search %}
+                                        {% from "vroha/templates/includes/macros.html" import search %}
                                         {% set cat_name = [] %}
 
                                         {% if categories %}
@@ -111,20 +111,20 @@
                                                 {{ cat_name.append( {category.route: category.website_title} ) or '' }}
                                             {% endfor %}
                                         {% endif %}
-            
-                                        {{ search("col-md-5","col-md-4","col-md-3","search Courses...","1",cat_name,route,main_catr) }}       
+
+                                        {{ search("col-md-5","col-md-4","col-md-3","search Courses...","1",cat_name,route,main_catr) }}
                                 </div>
-            
+
                                 <h4 class="text-grey-800 font-xssss fw-500 ml-1 lh-24"> <b class="text-grey-800 text-dark">{{_("Popular Search")}} :</b> {{_("Psychometric, Driving, English, Safety")}} </h4>
-                                
+
                             </div>
 
 
 
                         </div>
                     </div>
-                
-                    
+
+
 
                     {% if slideshow and not frappe.form_dict %}<!-- slideshow -->
                         {{ web_block(
@@ -148,21 +148,21 @@
                     <div class="col-lg-12 pt-4 mt-1 mb-4">
                         <h2 class="fw-400 font-lg">All <b>{{_("Results")}}</b></h2>
                     </div>
-                    
+
                     <div class="products-list row col-lg-12 mx-auto">
-                    
+
                             {% if items %}
                                 {% for item in items %}
-                                        {% include "roadslink/www/all/item_row.html" %}
+                                        {% include "vroha/www/all/item_row.html" %}
                                 {% endfor %}
                             {% else %}
-                                    {% include "roadslink/www/all/not_found.html" %}
+                                    {% include "vroha/www/all/not_found.html" %}
                             {% endif %}
                     </div>
 
-                
+
                     <div class="row mt-5 col-12 mb-4 pb-3">
-                        
+
                         <div class="mx-auto">
                             <button class="btn-prev rounded-xxxl btn-round-md p-0 fw-600 shadow-xss bg-current text-white border-0 {% if not frappe.form_dict.start|int > 0 %} d-none {% endif %}"><i class="ti-angle-left"></i></button>
                             <button class="btn-next rounded-xxxl btn-round-md p-0 fw-600 shadow-xss bg-current text-white border-0 {% if not items|length >= page_length %} d-none {% endif %}" ><i class="ti-angle-right"></i></button>

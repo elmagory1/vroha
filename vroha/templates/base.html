@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-	<meta name="generator" content="Roadslink">
+	<meta name="generator" content="Vroha">
 
 	{% block meta_block %}
 		{% include "templates/includes/meta_block.html" %}
@@ -32,7 +32,7 @@
 
 		<!-- default budle scss files from base app removed -->
 
-        {{ include_style('roadslink.bundle.css') }}
+        {{ include_style('vroha.bundle.css') }}
 
         <!-- web css hooks for other apps removed-->
 
@@ -64,7 +64,7 @@
 <body frappe-session-status="{{ 'logged-in' if frappe.session.user != 'Guest' else 'logged-out'}}" data-path="{{ path | e }}" {%- if template and template.endswith('.md') %} frappe-content-type="markdown" {%- endif %} class="{{ body_class or ''}} {{color_theme}}">
 	{% include "public/icons/timeless/symbol-defs.svg" %}
 	<div class="preloader"></div>
-	
+
 	{%- block banner -%}
 		{% include "templates/includes/banner_extension.html" ignore missing %}
 
@@ -116,8 +116,8 @@
 	</script>
 	<script type="text/javascript" src="/assets/frappe/node_modules/moment/min/moment-with-locales.min.js"></script>
 	<script type="text/javascript" src="/assets/frappe/node_modules/moment-timezone/builds/moment-timezone-with-data.min.js"></script>
-	
-		{{ include_script('roads-web.bundle.js') }}
+
+		{{ include_script('vroha-web.bundle.js') }}
 		{{ include_script('controls-web.bundle.js') }}
 		{{ include_script('dialog-web.bundle.js') }}
 	{% endblock %}

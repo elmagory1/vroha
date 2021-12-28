@@ -4,7 +4,7 @@
 
 //import hljs from 'frappe/website/js/syntax_highlight';
 
-import hljs from 'roadslink/website/js/syntax_highlight';
+import hljs from 'vroha/website/js/syntax_highlight';
 
 frappe.provide("website");
 frappe.provide("frappe.awesome_bar_path");
@@ -226,12 +226,12 @@ $.extend(frappe, {
 	render_user: function() {
 		$('.user-image-wrapper').html(frappe.avatar("w30"));
 		$('.user-image-wrapperme').html(frappe.avatar("w65"));
-		
+
 		if (frappe.is_user_logged_in()) {
 			//$(".btn-login-area").toggle(false);
 			//$(".logged-in").toggle(true);
 			//$(".user-image").attr("src", frappe.get_cookie("user_image"));
-			
+
 			//$('.user-image-sidebar').html(frappe.avatar(null, 'avatar-medium', null, null, null, true));
 			//$('.user-image-myaccount').html(frappe.avatar(null, 'avatar-large', null, null, null, true));
 		}
@@ -301,7 +301,7 @@ $.extend(frappe, {
 			search();
 		});
 	},
-	
+
 	do_search: function(datapath,val=null) {
 		frappe.set_search_path(datapath);
 
@@ -314,7 +314,7 @@ $.extend(frappe, {
 			window.location.href = "/" + path;
 		}
 
-		
+
 	},
 	set_search_path: function(path) {
 		frappe.awesome_bar_path[location.pathname] = path;
@@ -400,7 +400,7 @@ $.extend(frappe, {
 		});
 	},
 	show_language_picker() {
-			
+
 		frappe.call("frappe.translate.get_all_languages", {
 			with_language_name: true
 		}).then(res => {
@@ -430,7 +430,7 @@ $.extend(frappe, {
 						let lang = language_switcher.val();
 						frappe.call({
 							method: 'frappe.client.set_value',
-							//method: 'roadslink.roadslink.utils.set_lang_info',
+							//method: 'vroha.vroha.utils.set_lang_info',
 							args: {
 								doctype: "User",
 								name: frappe.session.user,
@@ -448,7 +448,7 @@ $.extend(frappe, {
 						});
 					});
 
-				
+
 			}else{
 				language = language || (language_codes.includes(navigator.language) ? navigator.language : 'en');
 
@@ -467,12 +467,12 @@ $.extend(frappe, {
 		});
 	},
 	handlePreloader(){
-		setInterval(function(){ 
+		setInterval(function(){
 			$('.preloader').fadeOut(300);
 		}, 400);
-		setInterval(function(){ 
+		setInterval(function(){
 			$('body').addClass('loaded');
-		}, 600); 
+		}, 600);
 
 	}
 });
@@ -507,17 +507,17 @@ frappe.setup_search = function (target) {
 			return;
 		}else{
 			let $main_parents = $(inputobj).parents(".dropdown-menusearch")
-			$dropdown_menu = $main_parents.find('.dropdown-menu'); 
-			$deep_search = $main_parents.find('.deep-search'); 
+			$dropdown_menu = $main_parents.find('.dropdown-menu');
+			$deep_search = $main_parents.find('.deep-search');
 		}
 
 		if($selected_cat){
 			e.currentTarget.attributes['data-scope'].value = $selected_cat
 		}
 
-		
+
 		frappe.call({
-			method: 'roadslink.search.web_search',
+			method: 'vroha.search.web_search',
 			args: {
 				scope: e.currentTarget.attributes['data-scope'].value || null,
 				query: inputobjval+'*',
@@ -662,14 +662,14 @@ $(function() {
 	$('.close-filter').on('click', function () {
         $('.navigation.filter-menu').removeClass('nav-active');
     });
-	
+
 	$('.backdrop').on('click', function () {
         $('.navigation').removeClass('nav-active');
 		$('.backdrop').addClass('d-none');
         return false;
     });
 
-	
+
 	$("#footer-subscribe-button").click(function() {
 
 		if($("#footer-subscribe-email").val() && validate_email($("#footer-subscribe-email").val())) {
@@ -736,8 +736,8 @@ frappe.ready(function() {
 	$('.searchbox-close').on('click', function() {
 		$('.app-header-search').removeClass('show');
 	});
-	
-	frappe.require('/assets/roadslink/universe/vendor/owl-carousel/js/owl.carousel.min.js', () => {
+
+	frappe.require('/assets/vroha/universe/vendor/owl-carousel/js/owl.carousel.min.js', () => {
 		// chat.js is loaded
 		$('.course-slide').owlCarousel({
 			loop:true,
@@ -780,7 +780,7 @@ frappe.ready(function() {
 				1320:{
 					items:4,
 				}
-    
+
             }
 		})
 		$('.brand-slider').owlCarousel({
@@ -801,10 +801,10 @@ frappe.ready(function() {
                 1200:{
                     items:4,
                 }
-    
+
             }
         })
-		
+
 		$('.feedback-slider').owlCarousel({
 			loop:true,
 			rtl:(window.layout_direction == "rtl")?true:false,
@@ -824,10 +824,9 @@ frappe.ready(function() {
 				1200:{
 					items:3,
 				}
-	
+
 			}
 		})
 	})
 	frappe.socketio.init(window.socketio_port);
 });
-

@@ -15,28 +15,28 @@
 					{% block breadcrumbs %}
     					{% include "templates/includes/breadcrumbs.html" %}
 					{% endblock %}
-					<h2 class="display3-size fw-400 display2-md-size">{{_("Find a perfect")}} <b>{{_("Online Course")}}</b></h2>    
+					<h2 class="display3-size fw-400 display2-md-size">{{_("Find a perfect")}} <b>{{_("Online Course")}}</b></h2>
 					<h4 class="text-grey-800 font-xssss fw-500 ml-1 lh-24">{{_("To excel yourself in the driving industry")}}</h4>
 
 					<div class="form-group mt-lg-4 p-0 border-light border bg-white rounded-lg">
-							{% from "roadslink/templates/includes/macros.html" import search %}
+							{% from "vroha/templates/includes/macros.html" import search %}
 							{% if categories %}
-								{% from "roadslink/templates/includes/macros.html" import category_card %}  
+								{% from "vroha/templates/includes/macros.html" import category_card %}
 								{% set category = None %}
 								{% set navigation %}
 									{% for category in categories %}
 										{{ category_card(category.website_title,category.route,category.category_color, category.category_icon) }}
 										{{ cat_name.append( {category.route: category.website_title} ) or '' }}
-				
+
 									{% endfor %}
 								{% endset %}
 							{% endif %}
 
-							{{ search("col-md-5","col-md-4","col-md-3","search Courses...","1",cat_name,main_catr,main_catr) }}		
+							{{ search("col-md-5","col-md-4","col-md-3","search Courses...","1",cat_name,main_catr,main_catr) }}
 					</div>
 
 					<h4 class="text-grey-800 font-xssss fw-500 ml-1 lh-24"> <b class="text-grey-800 text-dark">{{_("Popular Search")}} :</b> {{_("Psychometric, Driving, English, Safety")}} </h4>
-					
+
 				</div>
 			</div>
 		</div>
@@ -62,7 +62,7 @@
 
 		{% if categories %}
 			<div class="col-lg-12 pt-4">
-				<h2 class="fw-400 font-lg">{{_("Trending")}} <b>{{_("Categories")}}</b> 
+				<h2 class="fw-400 font-lg">{{_("Trending")}} <b>{{_("Categories")}}</b>
 				</h2>
 			</div>
 
@@ -75,15 +75,15 @@
 
 		{%if popular %}
 			<div class="col-lg-12 pt-4 ">
-				<h2 class="fw-400 font-lg">{{_("Popular")}} <b>{{_("Courses")}}</b> 
+				<h2 class="fw-400 font-lg">{{_("Popular")}} <b>{{_("Courses")}}</b>
 				</h2>
 			</div>
 
 			<div class="col-lg-12 mt-2 pt-2 pb-4 mb-4">
 				<!--<div class="owl-carousel category-card owl-theme overflow-hidden overflow-visible-xl nav-none"> -->
 					<div class="owl-carousel product-slide owl-theme owl-nav-link dot-style2">
-					
-					{% from "roadslink/templates/includes/macros.html" import course_slider_card %}
+
+					{% from "vroha/templates/includes/macros.html" import course_slider_card %}
 					{% for item in popular %}
 						{{ course_slider_card(item.route,item.website_image,item.category_color,item.item_group,item.item_name,item.rating, item.formatted_price) }}
 					{% endfor %}
@@ -98,8 +98,8 @@
 		</div>
 
 
-							
-			
+
+
 </div>
 
 {% endblock %}
