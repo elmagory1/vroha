@@ -224,6 +224,12 @@ override_whitelisted_methods = {
 
 fixtures = [
     {
+    	"doctype":"Custom Field",
+       	"filters": {
+            "name": ["in", ["Language-active","Customer-status","Customer-is_partner","Customer-partner_section","Item-minimum_quantity","Item-learning_product_type","Website Slideshow Item-label", "Item-free_to_enroll","Item-skills","Item-rating","Item-total_ratings", "Item-item_video","Brand-website_image", "Website Slideshow Item-video", "Website Slideshow Item-sticker_back", "Website Slideshow Item-sticker_text", "Item Group-items_slideshow", "Website Slideshow Item-tag", "Top Bar Item-class", "Web Page Block-add_section", "Web Page Block-row_div_con_sec_end", "Web Page Block-row_class", "Web Page Block-add_row", "Web Page Block-add_div", "Web Page-page_div_class", "Web Page Block-div_class", "Item Group-category_color","Item-category_color", "Top Bar Item-icon_class", "Item Group-category_icon","Web Page-language", "Country-dial_code", "User-dial_country", "User-dial_code", "User-mobile_number", "User-auto_email", "User-column_break_origin", "Selling Settings-supplier_need_verification", "Supplier-verified", "Selling Settings-learning_enabled", "Website Settings-color_theme", "System Settings-domain_for_auto_email"]]
+		}
+    },
+    {
     	"doctype":"Property Setter",
        	"filters": {
             "name": ["in", ["Item-slideshow-hidden", "Item-slideshow-read_only", "Item Group-slideshow-hidden", "Item Group-slideshow-read_only", "Item-main-max_attachments", "Item-item_name-translatable", "User-mobile_no-read_only", "User-send_welcome_email-default", "User-email-mandatory_depends_on", "User-email-reqd", "User-mobile_no-mandatory_depends_on", "User-mobile_no-hidden", "Contact Phone-phone-reqd", "Contact Phone-phone-read_only", "Contact Phone-phone-unique", "Contact Phone-phone-in_list_view", "User-phone-unique", "User-phone-hidden", "User-phone-read_only", "Address-phone-options", "Address-phone-unique", "Address-phone-read_only", "Customer-customer_name-read_only_depends_on", "Customer-customer_name-fetch_from", "Customer-gender-fetch_from"]]
