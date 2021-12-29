@@ -17,6 +17,7 @@ def after_install():
 
 def add_desc():
     frappe.db.set_value('Homepage', 'Homepage' , 'description', 'This is an example website auto-generated from Vroha.')
+    frappe.db.set_value('Website Settings', 'Website Settings' , 'app_name', 'Vroha')
 
 
 def import_dial_code():

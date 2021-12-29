@@ -237,27 +237,46 @@ fixtures = [
     },
 
     {
-        "doctype": "Portal Settings"
+        "doctype": "Portal Settings",
+        "filters": {
+            "name": ["in", ["Portal Settings"]]
+		}
 	},
 
     {
-		"doctype": "Website Settings"
+		"doctype": "Website Settings",
+        "filters": {
+            "name": ["in", ["Website Settings"]]
+		}
 	},
 
     {
-		"doctype": "Products Settings"
+		"doctype": "Products Settings",
+        "filters": {
+            "name": ["in", ["Products Settings"]]
+		}
 	},
 
     {
-		"doctype": "Contact Us Settings"
+		"doctype": "Contact Us Settings",
+        "filters": {
+            "name": ["in", ["Contact Us Settings"]]
+		}
 	},
 
     {
-		"doctype": "Website social links"
+		"doctype": "Website social links",
+        "filters": {
+            "name": ["in", ["Website social links"]]
+		}
 	},
 
     {
-        "doctype": "Energy Point Settings"
+        "doctype": "Energy Point Settings",
+        "filters": {
+            "name": ["in", ["Energy Point Settings"]]
+		}
+
 	},
 
 
